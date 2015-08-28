@@ -24,12 +24,12 @@ from .models import Property
 #         pets_allowed = False,
 #     )
 
-#     self.test_property_four = Property.objects.create(
-#         address = "356 Foo, dev null place, 12345",
-#         description = "Foo foo, foo; foo, foo; foo!",
-#         pets_allowed = False,
-#         contact_information = " { 'test': field, 'another': field } ",
-#     )
+    # self.test_property_four = Property.objects.create(
+    #     address = "356 Foo, dev null place, 12345",
+    #     description = "Foo foo, foo; foo, foo; foo!",
+    #     pets_allowed = False,
+    #     contact_information = " { 'test': field, 'another': field } ",
+    # )
 
 # Create your tests here.
 class PropertyModelTests(TestCase):
