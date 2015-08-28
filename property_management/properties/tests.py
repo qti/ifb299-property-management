@@ -33,7 +33,13 @@ from .models import Property
 
 # Create your tests here.
 class PropertyModelTests(TestCase):
+    """
+    Property model tests
+    """
     def test_id_creation(self):
+        """
+        Tests that creating a property also creates an id
+        """
         test_property_one = Property.objects.create(
             address="27 Foo, dev null place, 1337",
             pets_allowed=False,
@@ -44,6 +50,9 @@ class PropertyModelTests(TestCase):
         self.assertEqual(test_property_one, properties)
 
     def test_id_iteration(self):
+        """
+        Tests that each new property has a new id created for it
+        """
         test_property_one = Property.objects.create(
             address="27 Foo, dev null place, 1337",
             pets_allowed=False,
