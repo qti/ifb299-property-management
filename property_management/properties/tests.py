@@ -1,5 +1,5 @@
 """
-Contains unit tests the properties app
+Contains unit tests for the properties app
 """
 from django.test import TestCase
 
