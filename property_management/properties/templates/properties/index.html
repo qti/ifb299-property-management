@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-light bg-faded">
+      <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
+      <a class="navbar-brand" href="#">Property Management</a>
+      <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="properties">Properties</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline navbar-form pull-right">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-success-outline pull-right" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+      </div>
+</nav>
+      
+      
+      <div class="intro">
+      <div class="introtxt"> 
+          <h1 class="display-1">View and Manage Properties</h1>
+          <br>
+              <div class="center-block">
+              <a class="btn btn-primary btn-lg" href="properties"><i class="fa fa-home"></i> View Properties</a>
+              </div>
+      </div>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+  </body>
+</html>
