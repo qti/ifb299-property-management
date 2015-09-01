@@ -56,10 +56,12 @@
                     <h4 class="card-title">{{ property.name }}</h4>
                     <h6 class="card-subtitle text-muted">This is a house</h6>
                   </div>
-                  <img src="img/villa.jpg" height="100%" width="100%" alt="Card image">
+                  <img src="{% static 'properties/images/villa2.jpg' %}" height="100%" width="100%" alt="Card image">
                   <div class="card-block">
-                  	<p class="card-text"><b>Property ID: </b>{{ property.pk }}</p>
+                  	<!-- <p class="card-text"><b>Property ID: </b>{{ property.pk }}</p> -->
                     <p class="card-text"><b>Address: </b>{{ property.address }}</p>
+                    <p class="card-text"><b>Pets: </b>{{ property.pets_allowed }}</p>
+                    <!-- <p class="card-text"><b>Description: </b>{{ property.description }}</p> -->
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                   </div>
