@@ -1,4 +1,5 @@
 # ifb299-property-management
+[![Build Status](https://magnum.travis-ci.com/Tervel/ifb299-property-management.svg?token=a6Jyn3puWowgvGzYW6Hg&branch=master)](https://magnum.travis-ci.com/Tervel/ifb299-property-management)
 
 [**Hosted on Heroku**](https://dry-plains-2958.herokuapp.com)
 
