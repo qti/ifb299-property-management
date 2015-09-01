@@ -9,19 +9,22 @@ from .models import Property
 def index(request):
     context = RequestContext(request)
     return render(request, 'properties/index.html', context)
-
-#def index(request):
-#	template = loader.get_template('properties/index.html')
-#    context = RequestContext(request, {
-#        
-#    })
-#    return render(template.render(context))
     
-
 def properties(request):
-    context = RequestContext(request)
+    #context = RequestContext(request)
+    property_list = Property.objects.all()
+    context = {'property_list': property_list }
     return render(request, 'properties/properties.html', context)
     
 #def properties(request):
-#    template = loader.get_template('properties/properties.html')
-#    return HttpResponse(template.render())
+#	property_list = Property.objects.all()
+#	context = RequestContext(request)
+	#context = {'property_list': property_list}
+#    return render(request, 'properties/properties.html', context)
+    
+    
+#def index(request):
+#    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+#    context = {'latest_question_list': latest_question_list}
+#    return render(request, 'polls/index.html', context)
+    
