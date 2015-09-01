@@ -1,0 +1,19 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.4"
+
+env:
+  - DJANGO=1.8.4
+
+before_install:
+  - export PYTHONPATH=$HOME/builds/Tervel/ifb299-property-management.git
+  - export PIP_USE_MIRRORS=true
+
+install:
+  - pip install -r requirements.txt
+  - pip install django==$DJANGO --quiet
+
+script:
+  - "cd property_management && python manage.py test"
