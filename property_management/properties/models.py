@@ -12,6 +12,7 @@ class Property(models.Model):
     """
     Model for an individual property
     """
+    name = models.CharField(max_length=255, default='House listing')
     address = models.CharField(max_length=255)
     description = models.TextField()
     pets_allowed = models.BooleanField(default=False)
