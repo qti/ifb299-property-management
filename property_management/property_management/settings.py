@@ -53,7 +53,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'property_management.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "/property_management/templates"),
+    os.path.join(BASE_DIR, "templates"),
 )
 
 TEMPLATES = [
