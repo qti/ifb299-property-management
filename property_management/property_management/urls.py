@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+from . import views
 
 urlpatterns = [
-	url(r'^', include('properties.urls')),
+    url(r'^properties/', include('properties.urls', namespace='properties')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', views.index),
 ]
+
+# Allows us to find static files in debug mode
+urlpatterns += staticfiles_urlpatterns() # Remove this and import for production

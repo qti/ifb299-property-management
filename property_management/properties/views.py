@@ -1,21 +1,15 @@
-from django.shortcuts import render
-
-# Create your views here.
-#from django.http import HttpResponse
-from django.template import RequestContext, loader
+from django.shortcuts import get_object_or_404, render
 
 from .models import Property
 
-def index(request):
-    context = RequestContext(request)
-    return render(request, 'properties/index.html', context)
-    
-def properties(request):
-    property_list = Property.objects.all()
-    context = {'property_list': property_list }
-    return render(request, 'properties/properties.html', context)
-    
-#def property(request):
-#    property_list = Property.objects.all()
-#    context = {'property_list': property_list }
-#    return render(request, 'properties/property.html', context)    
+# Create your views here.
+def property_list(request):
+    properties = Property.objects.all()
+    return render(request, 'properties/properties.html',
+        { 'properties': properties })
+
+def property_detail(request):
+    individual_property = get_object_or_404(Property, pk=pk)
+    return render(request, 'properties/property.html', 
+        { 'individual_property': individual_property })
+
