@@ -14,6 +14,7 @@ class Property(models.Model):
     """
     name = models.CharField(max_length=255, default='House listing')
     address = models.CharField(max_length=255)
+    rent_cost = models.CharField(max_length=50, null='true')
     description = models.TextField()
     pets_allowed = models.BooleanField(default=False)
     contact_information = models.TextField() # refactor into JSON field (maybe)

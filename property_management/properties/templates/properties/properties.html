@@ -18,7 +18,7 @@
       <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
       <ul class="nav navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="{% url "properties" %}">Properties <span class="sr-only">(current)</span></a>
+          <a class="nav-link">Properties <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url "index" %}">Home</a>
@@ -54,16 +54,27 @@
               <div class="card">
                   <div class="card-block">
                     <h4 class="card-title">{{ property.name }}</h4>
-                    <h6 class="card-subtitle text-muted">This is a house</h6>
+                    <h6 class="card-subtitle text-muted">${{ property.rent_cost }} p/w</h6>
                   </div>
-                  <img src="{% static 'properties/images/villa2.jpg' %}" height="100%" width="100%" alt="Card image">
+                  <!-- <img src="{% static 'properties/images/villa2.jpg' %}" height="100%" width="100%" alt="Card image"> -->
+                  <img src="{{ property.image }}" height="100%" width="100%" alt="Card image">
                   <div class="card-block">
                   	<!-- <p class="card-text"><b>Property ID: </b>{{ property.pk }}</p> -->
                     <p class="card-text"><b>Address: </b>{{ property.address }}</p>
-                    <p class="card-text"><b>Pets: </b>{{ property.pets_allowed }}</p>
+                    
+                    <!-- indicate whether pets are allowed or not -->
+                    <p class="card-text"><b>Pets allowed: </b>
+                    {% if property.pets_allowed %}
+                    	Yes
+                    {% else %}
+                    	No
+                    {% endif %}
+                    </p>
+                    
+                    <p class="card-text"><b>Contact: </b>{{ property.contact_information }}</p>
                     <!-- <p class="card-text"><b>Description: </b>{{ property.description }}</p> -->
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <!-- <a href="#" class="card-link">Card link</a> -->
+                    <a href="" class="card-link">More details</a>
                   </div>
                 </div>
             </div>
