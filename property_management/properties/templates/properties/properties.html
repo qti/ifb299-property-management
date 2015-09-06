@@ -36,7 +36,7 @@
               <b>Contact: </b>{{ property.contact_information }}
             </p>
 
-            <a href="" class="card-link">More details</a>
+            <a href="{% url 'properties:detail' property.pk %}" class="card-link">More details</a>
           </div>
         </div>
       </div>

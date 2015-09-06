@@ -11,6 +11,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'properties/css/bootstrap.css' %}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  	<script>
+    // Bootstrap carousel
+    $(function(){
+      $('#Carousel').carousel();
+    });
+    </script>
+  
   </head>
   <body>
     <nav class="navbar navbar-fixed-top navbar-light bg-faded">
@@ -26,13 +34,14 @@
         {% endif %}
           <a class="nav-link" href="{{ url }}">Home</a>
         </li>
-        {% url 'properties:list' as url %}
-        {% if request.path == url %}
+        {% url 'properties:list' as properties_url %}
+        {% url 'properties:detail' as property_detail_url %}
+        {% if request.path == properties_url or request.path == property_detail_url %}
           <li class="nav-item active">
         {% else %}
           <li class="nav-item">
         {% endif %}
-          <a class="nav-link" href="{{ url }}">Properties</a>
+          <a class="nav-link" href="{{ properties_url }}">Properties</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
