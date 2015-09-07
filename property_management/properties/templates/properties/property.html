@@ -1,49 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags always come first -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+{% extends "layout.html" %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-      
-    <script>
-    // Bootstrap carousel
-    $(function(){
-      $('#Carousel').carousel();
-    });
-    </script>
-      
-  </head>
-  <body>
-    <nav class="navbar navbar-fixed-top navbar-transparent bg-faded" style="background-color: rgba(0, 0, 0, .35);">
-      <button class="navbar-toggler hidden-sm-up pull-right"  style="color: white;" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
-      <a class="navbar-brand" href="#">Property Management</a>
-      <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-      <ul class="nav navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="properties.html">Properties</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-      </ul>
-      <form class="form-inline navbar-form pull-right">
-        <input class="form-control" type="text" placeholder="Search">&nbsp;
-        <button class="btn btn-success-outline pull-right" type="submit"><i class="fa fa-search"></i></button>
-      </form>
-      </div>
-</nav>
-      
+{% block content %}
       <div id="Carousel" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -52,13 +9,13 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img src="img/property1.jpg" alt="First slide">
+              <img src="{{ individual_property.image }}" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img src="img/property2.jpeg" alt="Second slide">
+              <img src="{{ individual_property.image }}" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img src="img/property3.jpg" alt="Third slide">
+              <img src="{{ individual_property.image }}" alt="Third slide">
             </div>
           </div>
           <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -74,60 +31,46 @@
       <br>
       <br>
       <div class="container">
-      <h1>House Name</h1>
-      <h4>Sub title...</h4>
+      <h1>{{ individual_property.name }}</h1>
+      <h4> </h4>
+
           
       <div class="row">
       <div class="col-xs-12 col-md-8">
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis suscipit sem sit amet sem imperdiet iaculis. Integer volutpat gravida tellus, quis sollicitudin elit sodales convallis. Aenean nunc velit, accumsan vitae vestibulum vitae, egestas ut dui. Curabitur venenatis condimentum mi non mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae risus mattis, viverra ex eget, semper tellus. Nunc ornare rhoncus porttitor. Quisque a dolor id velit laoreet scelerisque. Maecenas aliquet bibendum sapien, id posuere odio tempor eu.
-          </p>
-          <p>
-          Etiam lobortis lectus a dui tincidunt pharetra. Aliquam erat volutpat. Cras accumsan scelerisque placerat. Maecenas eget est mollis, aliquam neque non, cursus sem. Curabitur elementum elit tellus, eleifend auctor tortor cursus sed. In fermentum eros eget mi condimentum porta. Ut elementum consectetur purus, et commodo felis dictum ac. Etiam eu velit finibus, egestas velit eget, lobortis ipsum.
-          </p>
-          <p>
-          Aliquam mattis lacus eu sodales aliquet. Sed sit amet nibh quam. Ut ultricies nibh non faucibus placerat. Sed nec scelerisque diam, et ornare ex. Vestibulum sollicitudin lobortis nibh sed pellentesque. Nulla ac dapibus nunc. Phasellus quis eros non neque pharetra sollicitudin sit amet sed magna.
-          </p>
-          <p>
-          Donec venenatis, felis nec hendrerit tincidunt, velit enim molestie leo, ac lobortis erat nisi et nibh. Sed placerat, dolor eu aliquet blandit, est tellus dapibus justo, et lobortis est lacus sed sem. Aliquam a ex eu purus varius porta et id nunc. Ut aliquet lectus eget orci fringilla pulvinar. Cras convallis metus ut luctus consequat. Nulla semper tempus diam et facilisis. Etiam quis elit vitae justo cursus maximus. Suspendisse accumsan dolor ac dui bibendum, nec tristique turpis ultrices.
-          </p>
-          <P>
-          Vivamus quis erat sit amet nulla aliquet mattis. Praesent at lobortis ante. Aenean lobortis consequat arcu, sed varius dolor consectetur sit amet. Duis condimentum ligula id diam varius vestibulum. Nunc convallis lacus et odio vehicula, vel imperdiet mi aliquet. Fusce ligula risus, hendrerit a euismod at, eleifend vitae leo. Pellentesque aliquam molestie risus, ut ornare nulla imperdiet ornare. Vivamus vehicula nisl eget varius lacinia. Donec risus odio, placerat eget scelerisque sed, efficitur id sem. Aliquam erat volutpat. Praesent non pellentesque neque. Nullam ullamcorper condimentum egestas. Nulla facilisi.
-          </P>
+      	<p></p>
+      	<p></p>
+        <p>{{ individual_property.description }}</p>
+        <br>
+        <br>
+        <h5>Main Features</h5>
+        <br>
+        <p>Property type: </p>
+        <p>Bedrooms: </p>
+        <p>Bathrooms: </p>
+        <p>Car spaces: </p>
       </div>
       <div class="col-xs-6 col-md-4">
           <div class="card">
               <div class="card-block">
-                <h4 class="card-title">Details</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h4 class="card-title">Manager's name</h4>
+                <p><i class="fa fa-phone"></i> {{ individual_property.contact_information }}</p>
               </div>
+              
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="fa fa-usd"></i> 5,000,000,000</li>
-                <li class="list-group-item"><i class="fa fa-map-marker"></i> New Farm, Brisbane</li>
-                <li class="list-group-item"><i class="fa fa-paw"></i> Pets allowed</li>
+                <li class="list-group-item"><i class="fa fa-usd"></i> {{ individual_property.rent_cost }} per week</li>
+                <li class="list-group-item"><i class="fa fa-map-marker"></i> {{ individual_property.address }}</li>
+                <li class="list-group-item"><i class="fa fa-paw"></i>       
+                {% if individual_property.pets_allowed %}
+                	Pets allowed
+              	{% else %}
+                	Pets not allowed
+              	{% endif %}
+                </li>
               </ul>
-              <div class="card-block">
-                <a href="#" class="card-link"><i class="fa fa-phone"></i> Contact</a>
-                <a href="#" class="card-link"><i class="fa fa-envelope"></i> E-mail</a>
-          </div>
-</div>
-      </div>
+             
+			</div>
+      	</div>
       </div>
       </div>
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-    <!-- jQuery first, then Bootstrap JS. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
-  </body>
-</html>
+{% endblock %}     

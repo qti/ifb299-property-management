@@ -8,7 +8,7 @@ def property_list(request):
     return render(request, 'properties/properties.html',
         { 'properties': properties })
 
-def property_detail(request):
+def property_detail(request, pk):
     individual_property = get_object_or_404(Property, pk=pk)
     return render(request, 'properties/property.html', 
         { 'individual_property': individual_property })

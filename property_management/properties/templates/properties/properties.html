@@ -33,11 +33,15 @@
               {% endif %}
             </li>
 
+<<<<<<< HEAD
             <li class="list-group-item">
               <i class="fa fa-phone"></i>{{ property.contact_information }}
             </li>
           <div class="card-block">
             <a href="" class="card-link">More details</a>
+=======
+            <a href="{% url 'properties:detail' property.pk %}" class="card-link">More details</a>
+>>>>>>> origin/master
           </div>
         </div>
       </div>
