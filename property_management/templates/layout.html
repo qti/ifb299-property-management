@@ -26,17 +26,14 @@
       <a class="navbar-brand" href="{% url 'views.index' %}">Property Management</a>
       <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
       <ul class="nav navbar-nav">
-        {% url 'views.index' as url %}
-        {% if request.path == url %}
+        {% if request.path == views.index %}
           <li class="nav-item active">
         {% else %}
           <li class="nav-item">
         {% endif %}
           <a class="nav-link" href="{{ url }}">Home</a>
         </li>
-        {% url 'properties:list' as properties_url %}
-        {% url 'properties:detail' as property_detail_url %}
-        {% if request.path == properties_url or request.path == property_detail_url %}
+        {% if request.path == 'properties:list' or request.path == 'properties:detail' %}
           <li class="nav-item active">
         {% else %}
           <li class="nav-item">
