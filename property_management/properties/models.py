@@ -20,6 +20,10 @@ class Property(models.Model):
     contact_information = models.TextField() # refactor into JSON field (maybe)
     # simple link to an imgur file, if no input set to blank field
     image = models.CharField(max_length=128, blank=True, default='')
+    bedrooms = models.CharField(max_length=2, null='true')
+    property_type = models.CharField(max_length=50,null='true')
+    bathrooms = models.CharField(max_length=2,null='true')
+    car_spaces = models.CharField(max_length=2,null='true')
 
     # Identifies self as address name rather than 'Property Object'
     def __str__(self):
