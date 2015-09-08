@@ -8,7 +8,6 @@
 
 <div class="container">
     <div class="row">
-
     <!-- Dynamically generate property cards for each property in the database -->
     {% for property in properties %}
       <div class="col-sm-4">
@@ -17,31 +16,36 @@
             <h4 class="card-title">{{ property.name }}</h4>
             <h6 class="card-subtitle text-muted"><i class="fa fa-usd"></i>{{ property.rent_cost }} p/w</h6>
           </div>
-          <img src="{{ property.image }}" height="100%" width="100%" alt="Card image">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <i class="fa fa-map-marker"></i>{{ property.address }}
-            </li>
+          <div class="img-container">
+            <img src="{{ property.image }}" alt="Card image">
+          </div>
+          <li class="list-group-item">
+            <i class="fa fa-map-marker"></i>{{ property.address }}
+          </li>
 
-            <!-- indicate whether pets are allowed or not -->
-            <li class="list-group-item">
-              <i class="fa fa-paw"></i>
-              {% if property.pets_allowed %}
-                Yes
-              {% else %}
-                No
-              {% endif %}
-            </li>
+          <!-- indicate whether pets are allowed or not -->
+          <li class="list-group-item">
+            <i class="fa fa-paw"></i>
+            {% if property.pets_allowed %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+          </li>
 
-            <li class="list-group-item">
-              <i class="fa fa-phone"></i> {{ property.contact_information }}
-            </li>
+          <li class="list-group-item">
+            <i class="fa fa-phone"></i> {{ property.contact_information }}
+          </li>
+
           <div class="card-block">
             <a href="{% url 'properties:detail' property.pk %}" class="card-link">More details</a>
           </div>
-
         </div>
       </div>
+      {% if forloop.counter|divisibleby:3 %}
+        </div>
+        <div class="row">
+      {% endif %}
     {% endfor %}
     </div>
 </div>
