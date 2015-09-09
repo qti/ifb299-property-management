@@ -4782,6 +4782,7 @@ a.label:hover {
   display: block;
   padding: .75rem 1.25rem;
   margin-bottom: -.0625rem;
+  margin: -.0625rem;
   background-color: #fff;
   border: .0625rem solid #ddd;
 }
@@ -6451,4 +6452,8 @@ img {
 
 .row {
   margin-bottom: 1rem;
+}
+
+.list-group-item {
+  margin: -.0625rem;
 }
