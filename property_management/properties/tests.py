@@ -4,6 +4,10 @@ Contains unit tests for the properties app
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 
+# Selenium
+from django.test import LiveServerTestCase
+from selenium.webdriver.firefox.webdriver import WebDriver
+
 from .models import Property
 
 # Create your tests here.
@@ -140,3 +144,19 @@ class PropertyViewsTests(TestCase):
 
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, self.test_property_two.image)
+
+class SeleniumTests(LiveServerTestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super(SeleniumTests, cls).setUpClass()
+        cls.selenium = WebDriver()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.selenium.quit()
+        super(SeleniumTests, cls).tearDownClass()
+
+    def test_selenium(self):
+        self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
+
