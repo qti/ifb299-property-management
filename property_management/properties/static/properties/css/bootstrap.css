@@ -392,7 +392,7 @@ a {
 
 a:focus,
 a:hover {
-  color: #FFFF00;
+  color: #05B2DC;
   text-decoration: underline;
 }
 
@@ -2281,8 +2281,8 @@ fieldset[disabled] a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #F44336;
-  border-color: #F44336;
+  background-color: #05B2DC;
+  border-color: #05B2DC;
 }
 
 .btn-primary:focus,
@@ -2296,9 +2296,9 @@ fieldset[disabled] a.btn {
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: #E53935;
-  border-color: #E53935;
+  color: black;
+  background-color: #fff;
+  border-color: #fff;
 }
 
 .btn-primary:active,
@@ -2588,10 +2588,10 @@ fieldset[disabled] .btn-primary-outline:hover {
 }
 
 .btn-secondary-outline {
-  color: #FFFF00;
+  color: #05B2DC;
   background-color: transparent;
   background-image: none;
-  border-color: #FFFF00;
+  border-color: #05B2DC;
 }
 
 .btn-secondary-outline:focus,
@@ -2600,14 +2600,14 @@ fieldset[disabled] .btn-primary-outline:hover {
 .btn-secondary-outline.active,
 .open > .btn-secondary-outline.dropdown-toggle {
   color: black;
-  background-color: #FFFF00;
-  border-color: #FFFF00;
+  background-color: #FFF;
+  border-color: #FFF;
 }
 
 .btn-secondary-outline:hover {
   color: black;
   background-color: #FFFF00;
-  border-color: #FFFF00;
+  border-color: #05B2DC;
 }
 
 .btn-secondary-outline.disabled:focus,
@@ -5946,7 +5946,7 @@ a.text-danger:hover {
 }
 
 .bg-faded {
-  background-color: #F44336;
+  background-color: #004BA8;
 }
 
 .bg-primary {
@@ -6452,8 +6452,4 @@ img {
 
 .row {
   margin-bottom: 1rem;
-}
-
-.list-group-item {
-  margin: -.0625rem;
 }
