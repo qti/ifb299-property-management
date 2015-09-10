@@ -146,6 +146,34 @@ class PropertyViewsTests(TestCase):
         self.assertContains(resp, self.test_property_two.image)
 
 class SeleniumTests(LiveServerTestCase):
+    # Populate the database
+    def setUp(self):
+        self.test_property_one = Property.objects.create(
+            address = "27 Foo, dev null place, 1337",
+            pets_allowed = False,
+            contact_information = " { 'test': field, 'another': field } ",
+        )
+
+        self.test_property_two = Property.objects.create(
+            name = "Foo Place",
+            address = "99 Foo, dev null place, 0000",
+            description = "Foo foo, foo; foo, foo; foo!",
+            contact_information = " { 'test': field, 'another': field } ",
+            image="http://i.imgur.com/81qyN1y.jpg",
+        )
+
+        self.test_property_three = Property.objects.create(
+            address = "42 Foo, dev null place, 9999",
+            description = "Foo foo, foo; foo, foo; foo!",
+            pets_allowed = True,
+        )
+
+        self.test_property_four = Property.objects.create(
+            address = "356 Foo, dev null place, 12345",
+            description = "Foo foo, foo; foo, foo; foo!",
+            pets_allowed = False,
+            contact_information = " { 'test': field, 'another': field } ",
+        )
 
     @classmethod
     def setUpClass(cls):
@@ -157,6 +185,17 @@ class SeleniumTests(LiveServerTestCase):
         cls.selenium.quit()
         super(SeleniumTests, cls).tearDownClass()
 
-    def test_selenium(self):
-        self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
+    def test_index(self):
+        self.selenium.get(self.live_server_url)
+        self.selenium.find_element_by_link_text("Home")
+        self.selenium.find_element_by_link_text("Properties")
+        self.selenium.find_element_by_link_text("About")
+        self.selenium.find_element_by_link_text("Login")
+        self.selenium.find_element_by_link_text("View Properties")
 
+    def test_property_list(self):
+        self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
+        self.selenium.find_element_by_link_text("Home")
+        self.selenium.find_element_by_link_text("Properties")
+        self.selenium.find_element_by_link_text("About")
+        self.selenium.find_element_by_link_text("Login")
