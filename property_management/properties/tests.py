@@ -146,6 +146,10 @@ class PropertyViewsTests(TestCase):
         self.assertContains(resp, self.test_property_two.image)
 
 class SeleniumTests(LiveServerTestCase):
+    """
+    Selenium tests, good for acceptance testing; prefer Django's inbuilt unit
+    testing functionality over selenium for models & views
+    """
     # Populate the database
     def setUp(self):
         self.test_property_one = Property.objects.create(
