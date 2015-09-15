@@ -31,25 +31,23 @@
       <br>
       <br>
       <div class="container">
+      <div class="row">
+      <div class="col-md-8">      
       <h1>{{ individual_property.name }}</h1>
-      <h4> </h4>
-
+      </div>
+      <div class="col-md-4">
+      <span class="label label-pill label-default"><i class="fa fa-home"></i> {{ individual_property.property_type }}</span>
+      <span class="label label-pill label-default"><i class="fa fa-bed"></i> {{ individual_property.bedrooms }}</span>
+      <span class="label label-pill label-default"><i class="fa fa-male"></i> {{ individual_property.bathrooms }}</span>
+      <span class="label label-pill label-default"><i class="fa fa-car"></i> {{ individual_property.car_spaces }}</span>   
+      </div>
+      </div>
           
       <div class="row">
-      <div class="col-xs-12 col-md-8">
-      	<p></p>
-      	<p></p>
+      <div class="col-md-8">
         <p>{{ individual_property.description }}</p>
-        <br>
-        <br>
-        <h5>Main Features</h5>
-        <br>
-        <p>Property type: {{ individual_property.property_type }}</p>
-        <p>Bedrooms: {{ individual_property.bedrooms }}</p>
-        <p>Bathrooms: {{ individual_property.bathrooms }}</p>
-        <p>Car spaces: {{ individual_property.car_spaces }}</p>
       </div>
-      <div class="col-xs-6 col-md-4">
+      <div class="col-md-4">
           <div class="card">
               <div class="card-block">
                 <h4 class="card-title">Manager's name</h4>

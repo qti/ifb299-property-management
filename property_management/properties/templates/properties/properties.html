@@ -6,6 +6,41 @@
 <br>
 <br>
 
+<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridModalLabel">Sort and Filter</h4>
+      </div>
+      <div class="modal-body text-center">
+        <h6><i class="fa fa-sort-amount-desc"></i> Sort:</h6>
+        <select class="c-select">
+          <option selected>Lowest to highest</option>
+          <option value="1">Highest to lowest</option>
+        </select>
+          <br>
+          <br>
+        <label class="c-input c-checkbox">
+          <input type="checkbox">
+          <span class="c-indicator"></span>
+          <i class="fa fa-paw"></i> Pets Allowed
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Apply</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <button type="button" class="btn btn-primary fixed" data-toggle="modal" data-target="#gridSystemModal">
+    <i class="fa fa-sliders"></i>
+  </button>
+
+
+
 <div class="container">
     <div class="row">
     <!-- Dynamically generate property cards for each property in the database -->
@@ -14,13 +49,13 @@
         <div class="card">
           <div class="card-block">
             <h4 class="card-title">{{ property.name }}</h4>
-            <h6 class="card-subtitle text-muted"><i class="fa fa-usd"></i>{{ property.rent_cost }} p/w</h6>
+            <h6 class="card-subtitle text-muted"><i class="fa fa-usd"></i> {{ property.rent_cost }} p/w</h6>
           </div>
           <div class="img-container">
             <img src="{{ property.image }}" alt="Card image">
           </div>
           <li class="list-group-item">
-            <i class="fa fa-map-marker"></i>{{ property.address }}
+            <i class="fa fa-map-marker"></i> {{ property.address }}
           </li>
 
           <!-- indicate whether pets are allowed or not -->
