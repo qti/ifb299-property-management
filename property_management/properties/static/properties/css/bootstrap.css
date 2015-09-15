@@ -6442,7 +6442,7 @@ a.bg-danger:hover {
     overflow: hidden;
 }
 
-/* Custom */
+/* Custom css */
 
 /*.img-container {
     position:relative;
@@ -6462,4 +6462,5 @@ img {
     left: 10px;
     bottom: 10px;
     z-index: 5;
+    
 }
