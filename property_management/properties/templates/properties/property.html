@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 
+{% block scripts %}
+  <script>
+    // Bootstrap carousel
+    $(function(){
+      $('#Carousel').carousel();
+    });
+  </script>
+{% endblock %}
+
 {% block content %}
       <div id="Carousel" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -27,7 +36,7 @@
             <span class="sr-only">Next</span>
           </a>
        </div>
-      
+
       <br>
       <br>
       <div class="container">
@@ -59,16 +68,16 @@
                 <li class="list-group-item"><i class="fa fa-map-marker"></i> {{ individual_property.address }}</li>
                 <li class="list-group-item"><i class="fa fa-paw"></i>       
                 {% if individual_property.pets_allowed %}
-                	Pets allowed
-              	{% else %}
-                	Pets not allowed
-              	{% endif %}
+                  Pets allowed
+                {% else %}
+                  Pets not allowed
+                {% endif %}
                 </li>
               </ul>
              
-			</div>
-      	</div>
+      </div>
+        </div>
       </div>
       </div>
-      
-{% endblock %}     
+
+{% endblock %}

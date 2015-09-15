@@ -1,0 +1,5 @@
+{{ object.name }}
+{{ object.rent_cost }}
+{{ object.address }}
+{{ object.pets_allowed }}
+{{ object.contact_information }}

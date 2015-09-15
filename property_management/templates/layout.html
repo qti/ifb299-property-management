@@ -12,14 +12,9 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'properties/css/bootstrap.css' %}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  
-  	<script>
-    // Bootstrap carousel
-    $(function(){
-      $('#Carousel').carousel();
-    });
-    </script>
-  
+
+    {% block scripts %}{% endblock %}
+
   </head>
   <body>
     <nav class="navbar navbar-fixed-top navbar-light bg-faded">
@@ -27,14 +22,14 @@
       <a class="navbar-brand" href="{% url 'views.index' %}">Property Management</a>
       <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
       <ul class="nav navbar-nav">
-        {% if request.path == views.index %}
+        {% if request.path == '/' %}
           <li class="nav-item active">
         {% else %}
           <li class="nav-item">
         {% endif %}
           <a class="nav-link" href="{% url 'views.index' %}">Home</a>
         </li>
-        {% if request.path == 'properties:list' or request.path == 'properties:detail' %}
+        {% if 'properties/' in request.path %}
           <li class="nav-item active">
         {% else %}
           <li class="nav-item">
@@ -48,8 +43,8 @@
           <a class="nav-link" href="#">About</a>
         </li>
       </ul>
-      <form class="form-inline navbar-form pull-right">
-        <input class="form-control" type="text" placeholder="Search">&nbsp;
+      <form class="form-inline navbar-form pull-right" method="get" action="{% url 'properties:haystack_search' %}">
+        <input class="form-control" type="text" placeholder="Search" name="q">&nbsp;
         <button class="btn btn-success-outline pull-right" type="submit"><i class="fa fa-search"></i></button>
       </form>
       </div>

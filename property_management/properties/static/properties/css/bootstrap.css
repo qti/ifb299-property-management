@@ -3842,7 +3842,7 @@ input[type="button"].btn-block {
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.active:focus,
 .navbar-light .navbar-nav .nav-link.active:hover {
-  color: black;
+  color: #05B2DC;
 }
 
 .navbar-light .navbar-divider {
