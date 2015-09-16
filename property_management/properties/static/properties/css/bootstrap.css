@@ -7,6 +7,7 @@
 @charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
+  font-family: 'Cinzel Decorative', cursive;
   font-family: 'Roboto', sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
@@ -526,6 +527,7 @@ h6, .h6 {
 }
 
 .display-1 {
+  font-family: 'Cinzel Decorative', cursive;
   font-size: 3.5rem;
   font-weight: 700;
   color: white;
@@ -2588,10 +2590,10 @@ fieldset[disabled] .btn-primary-outline:hover {
 }
 
 .btn-secondary-outline {
-  color: #05B2DC;
+  color: #004BA8;
   background-color: transparent;
   background-image: none;
-  border-color: #05B2DC;
+  border-color: #004BA8;
 }
 
 .btn-secondary-outline:focus,
@@ -2606,7 +2608,7 @@ fieldset[disabled] .btn-primary-outline:hover {
 
 .btn-secondary-outline:hover {
   color: black;
-  background-color: #FFFF00;
+  background-color: #FFF;
   border-color: #05B2DC;
 }
 
@@ -3670,7 +3672,7 @@ input[type="button"].btn-block {
 
 .navbar {
   position: relative;
-  padding: .5rem 1rem;
+  padding: .8rem 1rem;
 }
 
 .navbar:before,
@@ -3738,11 +3740,13 @@ input[type="button"].btn-block {
 }
 
 .navbar-brand {
-  float: left;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
+  font-family: 'Cinzel Decorative', cursive;
+  position: absolute;
+  left: 50%;
+  padding-top: .15rem;
+  padding-bottom: .15rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.95rem;
 }
 
 .navbar-brand:focus,
@@ -5949,7 +5953,10 @@ a.text-danger:hover {
 }
 
 .bg-faded {
-  background-color: #004BA8;
+  background: -webkit-linear-gradient(left, #004BA8 , #05B2DC); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #004BA8, #05B2DC); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #004BA8, #05B2DC); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #004BA8 , #05B2DC);
 }
 
 .bg-primary {
@@ -6354,12 +6361,12 @@ a.bg-danger:hover {
 /*# sourceMappingURL=bootstrap.css.map */
 
 .intro {
-    background-image: url(http://i.imgur.com/0AoP25F.jpg);
-    background-size: cover;
+    /*background-image: url(http://i.imgur.com/rjNlQpm.png);
+    background-size: auto;*/
     width: auto;
     height: 100vh;
-    padding-left: 30px;
-    padding-right: 30px;
+    /*padding-left: 30px;
+    padding-right: 30px;*/
 
 
 }
@@ -6368,7 +6375,8 @@ a.bg-danger:hover {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-
+    padding-left: 30px;
+    padding-right: 30px;
     text-align: center;
 }
 
@@ -6443,7 +6451,7 @@ a.bg-danger:hover {
     overflow: hidden;
 }
 
-/* Custom css */
+/* Custom */
 
 .img-container {
     position:relative;
@@ -6463,5 +6471,18 @@ img {
     right: 15px;
     top: 75px;
     z-index: 5;
+}
+
+.video {
+    position: fixed;
+    width: auto;
+    height: 100vh;
+    z-index: -100;
     
+}
+
+
+
+.blackwhite {
+    -webkit-filter: grayscale(100%) brightness(80%) contrast(100%);
 }
