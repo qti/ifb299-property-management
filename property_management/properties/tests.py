@@ -7,6 +7,14 @@ from django.core.urlresolvers import reverse
 # Selenium
 from django.test import LiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoAlertPresentException
+
+import unittest, time, re
 
 from .models import Property
 
@@ -52,6 +60,10 @@ class PropertyViewsTests(TestCase):
         self.test_property_one = Property.objects.create(
             address = "27 Foo, dev null place, 1337",
             pets_allowed = False,
+            bedrooms = "50",
+            property_type = "house",
+            bathrooms = "3",
+            car_spaces = "2",
             contact_information = " { 'test': field, 'another': field } ",
         )
 
@@ -145,6 +157,43 @@ class PropertyViewsTests(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertContains(resp, self.test_property_two.image)
 
+    def test_bedrooms(self):
+        resp = self.client.get(reverse('properties:list'))
+
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(
+                resp.context['properties'].get(pk=1).bedrooms,
+                self.test_property_one.bedrooms
+            )
+
+    def test_property_type(self):
+        resp = self.client.get(reverse('properties:list'))
+
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(
+                resp.context['properties'].get(pk=1).property_type,
+                self.test_property_one.property_type
+            )    
+
+    def test_bathrooms(self):
+        resp = self.client.get(reverse('properties:list'))
+
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(
+                resp.context['properties'].get(pk=1).bathrooms,
+                self.test_property_one.bathrooms
+            ) 
+
+    def test_car_spaces(self):
+        resp = self.client.get(reverse('properties:list'))
+
+        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(
+                resp.context['properties'].get(pk=1).car_spaces,
+                self.test_property_one.car_spaces
+            )           
+
+
 class SeleniumTests(LiveServerTestCase):
     """
     Selenium tests, good for acceptance testing; prefer Django's inbuilt unit
@@ -203,3 +252,22 @@ class SeleniumTests(LiveServerTestCase):
         self.selenium.find_element_by_link_text("Properties")
         self.selenium.find_element_by_link_text("About")
         self.selenium.find_element_by_link_text("Login")
+
+    # Doesn't work with search bar (yet)
+    # def test_prop(self):
+    #     self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
+    #     self.selenium.find_element_by_name("q").clear()
+    #     self.selenium.find_element_by_name("q").send_keys("99 Foo")
+    #     self.selenium.find_element_by_xpath("//button[@type='submit']").click()
+
+    #     src = self.selenium.page_source
+    #     text_found = re.search (r'42 Foo', src)
+    #     self.assertNotEquals(text_found, None)
+
+
+
+
+
+
+
+
