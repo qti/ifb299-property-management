@@ -252,22 +252,3 @@ class SeleniumTests(LiveServerTestCase):
         self.selenium.find_element_by_link_text("Properties")
         self.selenium.find_element_by_link_text("About")
         self.selenium.find_element_by_link_text("Login")
-
-    # Doesn't work with search bar (yet)
-    # def test_prop(self):
-    #     self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
-    #     self.selenium.find_element_by_name("q").clear()
-    #     self.selenium.find_element_by_name("q").send_keys("99 Foo")
-    #     self.selenium.find_element_by_xpath("//button[@type='submit']").click()
-
-    #     src = self.selenium.page_source
-    #     text_found = re.search (r'42 Foo', src)
-    #     self.assertNotEquals(text_found, None)
-
-
-
-
-
-
-
-
