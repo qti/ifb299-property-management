@@ -7,16 +7,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
-      
     <meta name="theme-color" content="#004BA8">
     <meta name="apple-mobile-web-app-status-bar-style" content="#004BA8">
     <!-- Bootstrap CSS -->
     <link href='https://fonts.googleapis.com/css?family=Cinzel+Decorative:700|Roboto:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'properties/css/bootstrap.css' %}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-    {% block scripts %}{% endblock %}
 
   </head>
   <body>
@@ -57,8 +53,9 @@
 
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
-	<script src="{% static 'properties/mains.js' %}"></script>
+    <script src="{% static 'properties/mains.js' %}"></script>
+    {% block scripts %}{% endblock %}
   </body>
 </html>

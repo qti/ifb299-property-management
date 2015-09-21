@@ -1,14 +1,5 @@
 {% extends "layout.html" %}
 
-{% block scripts %}
-  <script>
-    // Bootstrap carousel
-    $(function(){
-      $('#Carousel').carousel();
-    });
-  </script>
-{% endblock %}
-
 {% block content %}
       <div id="Carousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner" role="listbox">
@@ -66,5 +57,13 @@
         </div>
       </div>
       </div>
+{% endblock %}
 
+{% block scripts %}
+  <script>
+    // Bootstrap carousel
+    $(function(){
+      $('#Carousel').carousel();
+    });
+  </script>
 {% endblock %}
