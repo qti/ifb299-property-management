@@ -738,6 +738,10 @@ pre code {
   overflow-y: scroll;
 }
 
+#Container .mix{
+	display: none;
+}
+
 .container {
   padding-right: .9375rem;
   padding-left: .9375rem;
@@ -3931,9 +3935,10 @@ input[type="button"].btn-block {
 .card {
   position: relative;
   margin-bottom: .75rem;
+  margin-right:none;
   border: .0625rem solid #e5e5e5;
   border-radius: .25rem;
-
+  width:20rem;
 }
 
 .card-block {
@@ -3948,6 +3953,7 @@ input[type="button"].btn-block {
 .card-subtitle {
   margin-top: -.375rem;
   margin-bottom: 0;
+  
 }
 
 .card-text:last-child {
