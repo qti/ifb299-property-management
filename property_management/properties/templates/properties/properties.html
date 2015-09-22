@@ -107,7 +107,7 @@
           <i class="fa fa-phone"></i> {{ property.contact_information }}
         </li>
 		
-		<!-- Dynamically generate link to individual property page for this property -->
+		<!-- Dynamically generate link to individual property page for this property using it's primary key -->
         <div class="card-block">
           <a href="{% url 'properties:detail' property.pk %}" class="card-link">More details</a>
           
