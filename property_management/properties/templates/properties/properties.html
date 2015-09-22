@@ -6,6 +6,7 @@
 <br>
 <br>
 
+<!-- Sort properties filter box -->
 <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -47,45 +48,69 @@
   </button>
 
 
-
+<!-- Display a list of properties available. Properties are fetched from the database. -->
 <div id="Container" class="container">
   <div class="row">
+  
+  <!-- Dynamic generate a property card for every property in the database -->
   {% for property in properties %}
+  
+  	<!-- Filter/sort properties by pets allowed -->
+  	<!-- If pets allowed filter is selected, only show properties that allow pets -->
     {% if property.pets_allowed %}
-      <div class="mix category-1">
+    	<div class="mix category-1">
+    <!-- Otherwise, only show properties that do not allow pets -->
     {% else %}
-      <div class="mix category-2">
+    	<div class="mix category-2">
     {% endif %}
-    <!-- Dynamically generate property cards for each property in the database -->
+
+
+	<!-- Individual property information card -->
     <div class="col-sm-4">
       <div class="card">
         <div class="card-block">
+        
+          <!-- Pull property manager contact information/phone number from the database -->
           <h4 class="card-title">{{ property.name }}</h4>
+          
+          <!-- Pull rent cost information from the database -->
           <h6 class="card-subtitle text-muted"><i class="fa fa-usd"></i> {{ property.rent_cost }} p/w</h6>
         </div> <!-- end div card-block -->
+        
+        <!-- Property image displayed on the property's card -->
         <div class="img-container">
+        
+          <!-- Pull property image web link from database -->
           <img src="{{ property.image }}" alt="Card image">
         </div> <!-- end div img-container-->
         <li class="list-group-item">
+        
+          <!-- Pull the property address information from the database -->
           <i class="fa fa-map-marker"></i> {{ property.address }}
         </li>
 
-        <!-- indicate whether pets are allowed or not -->
+        <!-- Indicate whether pets are allowed or not -->
         <li class="list-group-item">
           <i class="fa fa-paw"></i>
+          <!-- If pets are allowed, display the text indicating so -->
           {% if property.pets_allowed %}
-          Yes
+          Pets allowed
+          <!-- If pets are not allowed, display the text indicating so -->
           {% else %}
-          No
+          Pets not allowed
           {% endif %}
         </li>
 
         <li class="list-group-item">
+        
+          <!-- Pull property manager contact information/phone number from the database -->
           <i class="fa fa-phone"></i> {{ property.contact_information }}
         </li>
-
+		
+		<!-- Dynamically generate link to individual property page for this property -->
         <div class="card-block">
           <a href="{% url 'properties:detail' property.pk %}" class="card-link">More details</a>
+          
         </div> <!-- end card-block-->
       </div><!-- end div card-->
     </div> <!-- end div col-sm-4-->
