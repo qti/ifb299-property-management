@@ -209,12 +209,14 @@ class SeleniumTests(LiveServerTestCase):
         self.test_property_one = Property.objects.create(
             address = "27 Foo, dev null place, 1337",
             pets_allowed = False,
+            rent_cost = 400,
             contact_information = " { 'test': field, 'another': field } ",
         )
 
         self.test_property_two = Property.objects.create(
             name = "Foo Place",
             address = "99 Foo, dev null place, 0000",
+            rent_cost = 200,
             description = "Foo foo, foo; foo, foo; foo!",
             contact_information = " { 'test': field, 'another': field } ",
             image="http://i.imgur.com/81qyN1y.jpg",
@@ -222,6 +224,7 @@ class SeleniumTests(LiveServerTestCase):
 
         self.test_property_three = Property.objects.create(
             address = "42 Foo, dev null place, 9999",
+            rent_cost = 300,
             description = "Foo foo, foo; foo, foo; foo!",
             pets_allowed = True,
         )
@@ -257,3 +260,24 @@ class SeleniumTests(LiveServerTestCase):
         self.selenium.find_element_by_link_text("Properties")
         self.selenium.find_element_by_link_text("About")
         self.selenium.find_element_by_link_text("Login")
+
+    def test_search_bar(self):
+        self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
+        self.selenium.find_element_by_name("q").clear()      
+        self.selenium.find_element_by_name("q").send_keys("200")
+        time.sleep(1)
+        self.selenium.find_element_by_xpath("//button[@type='submit']").click()
+
+    def test_filter_lowhigh(self):
+        self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
+        self.selenium.find_element_by_xpath("(//button[@type='button'])[11]").click()
+        Select(self.selenium.find_element_by_id("SortSelect")).select_by_visible_text("Lowest to highest")
+        self.selenium.find_element_by_css_selector("option[value=\"myorder:asc\"]").click()
+        self.selenium.find_element_by_css_selector("button.close").click()
+
+    def test_filter_highlow(self):
+        self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
+        self.selenium.find_element_by_xpath("(//button[@type='button'])[11]").click()
+        Select(self.selenium.find_element_by_id("SortSelect")).select_by_visible_text("Highest to lowest")
+        self.selenium.find_element_by_css_selector("option[value=\"myorder:asc\"]").click()
+        self.selenium.find_element_by_css_selector("button.close").click()
