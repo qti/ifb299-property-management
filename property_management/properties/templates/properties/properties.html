@@ -84,7 +84,10 @@
         <li class="list-group-item">
         
           <!-- Pull the property address information from the database -->
-          <i class="fa fa-map-marker"></i> {{ property.address }}
+          <i class="fa fa-map-marker"></i> 
+          	<i></i>{{ property.house_number }} {{ property.street }}<br>
+          	{{ property.suburb }} <br>
+          	{{ property.state }} {{ property.postcode }}<br>
         </li>
 
         <!-- Indicate whether pets are allowed or not -->
