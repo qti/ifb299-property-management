@@ -1,8 +1,10 @@
-import datetime
 from haystack import indexes
 from .models import Property
 
 class PropertyIndex(indexes.SearchIndex, indexes.Indexable):
+    """
+    Provides fields to Haystack search functionality for indexing
+    """
     text = indexes.CharField(document=True, use_template=True)
     name = indexes.CharField(model_attr='name')
     rent_cost = indexes.CharField(model_attr='rent_cost')

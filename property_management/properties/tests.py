@@ -4,7 +4,7 @@ Contains unit tests for the properties app
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 
-# Selenium
+# Selenium imports
 from django.test import LiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium import webdriver
@@ -57,6 +57,9 @@ class PropertyModelTests(TestCase):
 
 class PropertyViewsTests(TestCase):
     def setUp(self):
+        """
+        Instantiate test properties
+        """
         self.test_property_one = Property.objects.create(
             address = "27 Foo, dev null place, 1337",
             pets_allowed = False,
@@ -199,8 +202,10 @@ class SeleniumTests(LiveServerTestCase):
     Selenium tests, good for acceptance testing; prefer Django's inbuilt unit
     testing functionality over selenium for models & views
     """
-    # Populate the database
     def setUp(self):
+        """
+        Instantiate test properties
+        """
         self.test_property_one = Property.objects.create(
             address = "27 Foo, dev null place, 1337",
             pets_allowed = False,
