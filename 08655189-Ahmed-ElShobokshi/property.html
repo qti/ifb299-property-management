@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block scripts %}
+  <script>
+    // Bootstrap carousel
+    $(function(){
+      $('#Carousel').carousel();
+    });
+  </script>
+{% endblock %}
+
+{% block content %}
+      <div id="Carousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <img src="{{ individual_property.image }}" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ individual_property.image2 }}" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ individual_property.image3 }}" alt="Third slide">
+            </div>
+          </div>
+       </div>
+
+      <br>
+      <br>
+      <div class="container">
+      <div class="row">
+      <div class="col-md-8">      
+      <h1>{{ individual_property.name }}</h1>
+      </div>
+      <div class="col-md-4">
+      <span class="label label-pill label-default"><i class="fa fa-home"></i> {{ individual_property.property_type }}</span>
+      <span class="label label-pill label-default"><i class="fa fa-bed"></i> {{ individual_property.bedrooms }}</span>
+      <span class="label label-pill label-default"><i class="fa fa-male"></i> {{ individual_property.bathrooms }}</span>
+      <span class="label label-pill label-default"><i class="fa fa-car"></i> {{ individual_property.car_spaces }}</span>   
+      </div>
+      </div>
+          
+      <div class="row">
+      <div class="col-md-8">
+        <p>{{ individual_property.description }}</p>
+      </div>
+      <div class="col-md-4">
+          <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Manager's name</h4>
+                <p><i class="fa fa-phone"></i> {{ individual_property.contact_information }}</p>
+              </div>
+              
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="fa fa-usd"></i> {{ individual_property.rent_cost }} per week</li>
+                <li class="list-group-item"><i class="fa fa-map-marker"></i> {{ individual_property.address }}</li>
+                <li class="list-group-item"><i class="fa fa-paw"></i>       
+                {% if individual_property.pets_allowed %}
+                  Pets allowed
+                {% else %}
+                  Pets not allowed
+                {% endif %}
+                </li>
+              </ul>
+             
+      </div>
+        </div>
+      </div>
+      </div>
+
+{% endblock %}
