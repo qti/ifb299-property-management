@@ -6,49 +6,73 @@
 <br>
 <br>
 
-<!-- Sort properties filter box -->
+<!-- Sorting Filter Box -->
 <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+    
+      <!-- Sort box header and title container -->
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridModalLabel">Sort and Filter</h4>
       </div>
 
+    <!-- Sort box filter controls container -->
       <div class="modal-body text-center">
-        <h6><i class="fa fa-sort-amount-desc"></i> Sort:</h6>
-        <select id="SortSelect" class="c-select">
-          <option value="myorder:asc">Price: Lowest to highest</option>
-          <option value="myorder:desc">Price: Highest to lowest</option>
-        </select>
-        <br>
-        <br>
-        <label class="c-input c-checkbox filter" data-filter="all">
-          <i class="fa fa-paw"></i> Pets Allowed
-        </label>
-        <br>
-        <button type="button" class="filter btn btn-default" data-filter="all">Show All</button><!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-1">With Pets</button> <!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-2">No Pets</button> <!-- Filter buttons-->
-        <br>
-        <label class="c-input c-checkbox filter" data-filter="all">
-          Property Type
-        </label>
-        <br>
-        <button type="button" class="filter btn btn-default" data-filter=".category-3">House</button> <!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
-        <br>
-        <label class="c-input c-checkbox filter" data-filter="all">
-          Furniture
-        </label>
-        <br>
-        <button type="button" class="filter btn btn-default" data-filter=".category-6">Furnished</button> <!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-7">Not Furnished</button> <!-- Filter buttons-->
-        <br>
-        <br>
+
+      	<ul class="filter-controls">
+        	<!-- Price filter controls -->
+      		<li>
+        		<label class="filter-label" data-filter="all">
+        			Price
+        		</label>
+        		<select id="SortSelect" class="c-select">
+          	  	<option value="random">Default</option>
+          	  	<option value="myorder:asc">Lowest to highest</option>
+          	  	<option value="myorder:desc">Highest to lowest</option>
+        		</select>
+        		<br>
+        		<br>
+          	</li>
+          
+        	<!-- Pets allowed filter controls -->
+        	<li>
+        		<label class="filter filter-label" data-filter="all">
+          			Pets Allowed
+        		</label>
+        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-1">Yes</button> <!-- Filter buttons-->
+        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-2">No</button> <!-- Filter buttons-->
+        	</li>
+        
+        	<br>
+                         
+        	<!-- Property type filter controls -->
+        	<li>
+        		<label class="filter-label" data-filter="all">
+          			Property Type
+        		</label>
+        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-3">House</button> <!-- Filter buttons-->
+        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
+        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
+        	</li>
+        	
+        	<br>
+        
+        	<!-- Furnished state filter controls -->
+        	<li>
+        		<label class="filter-label" data-filter="all">
+          			Furnished State
+        		</label>
+        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-6">Furnished</button> <!-- Filter buttons-->
+        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-7">Not Furnished</button> <!-- Filter buttons-->
+        		<br>
+        		<br>
+        	</li>
+      	</ul>
+
       </div>
 
+    <!-- Show all properties button -->
       <div class="modal-footer">
         <button type="button" class="filter btn btn-primary" data-filter="all">Show All</button><!-- Filter buttons-->
       </div>
@@ -56,6 +80,7 @@
     </div>
   </div>
 </div>
+
 
 <button type="button" class="btn btn-primary fixed" data-toggle="modal" data-target="#gridSystemModal">
   <i class="fa fa-sliders"></i>
@@ -66,7 +91,8 @@
 
   <!-- Dynamic generate a property card for every property in the database -->
   {% for result in page.object_list %}
-
+	
+	<!-- Sorting filters conditions -->
     {% if result.object.pets_allowed and result.object.property_type == 'House' %}
       <div class="mix category-1 category-3" data-myorder="{{ result.object.rent_cost }}" style="display: inline-block;">
     {% elif result.object.pets_allowed and result.object.property_type == 'Apartment' %}
@@ -132,6 +158,7 @@
     </div> <!-- end div col-sm-4-->
 
 
+	<!-- Closing div tags for the sorting filters conditions -->
     {% if result.object.pets_allowed and result.object.property_type == 'House' %}
      </div>
     {% elif result.object.pets_allowed and result.object.property_type == 'Apartment' %}
