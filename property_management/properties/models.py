@@ -14,7 +14,7 @@ class Property(models.Model):
     """
     name = models.CharField(max_length=255, default='House listing')
     address = models.CharField(max_length=255)
-    rent_cost = models.CharField(max_length=50, null='true')
+    rent_cost = models.IntegerField(default=0)
     description = models.TextField()
     pets_allowed = models.BooleanField(default=False)
     contact_information = models.TextField() # refactor into JSON field (maybe)
@@ -22,10 +22,10 @@ class Property(models.Model):
     image = models.CharField(max_length=128, blank=True, default='')
     image2 = models.CharField(max_length=128, blank=True, default='')
     image3 = models.CharField(max_length=128, blank=True, default='')
-    bedrooms = models.CharField(max_length=2, null='true')
-    property_type = models.CharField(max_length=50,null='true')
-    bathrooms = models.CharField(max_length=2,null='true')
-    car_spaces = models.CharField(max_length=2,null='true')
+    bedrooms = models.IntegerField(default=0)
+    property_type = models.CharField(max_length=50, blank=True, default='')
+    bathrooms = models.IntegerField(default=0)
+    car_spaces = models.IntegerField(default=0)
 
     # Identifies self as address name rather than 'Property Object'
     def __str__(self):

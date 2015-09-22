@@ -60,10 +60,10 @@ class PropertyViewsTests(TestCase):
         self.test_property_one = Property.objects.create(
             address = "27 Foo, dev null place, 1337",
             pets_allowed = False,
-            bedrooms = "50",
+            bedrooms = 50,
             property_type = "house",
-            bathrooms = "3",
-            car_spaces = "2",
+            bathrooms = 3,
+            car_spaces = 2,
             contact_information = " { 'test': field, 'another': field } ",
         )
 
