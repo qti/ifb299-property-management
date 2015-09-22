@@ -6459,8 +6459,40 @@ by bootstrap */
 
 /* Format the layout of the address on each property card in the properties.html page */
 .property-card-address-indent {
-  text-indent:  14px;     /* indent the text so each line, lines up */
-  vertical-align: top;      /* to remove white space when using <div> tags */
+  text-indent:  	14px;     	/* indent the text so each line, lines up */
+  vertical-align: 	top;      	/* to remove white space when using <div> tags */
+}
+
+
+/* Sort box controls layout */
+.filter-controls {
+	list-style-type: 	none;	/* remove list dot points */
+	text-align:			left;
+	padding-left: 		50px;
+	padding-top:		30px;
+	padding-bottom:		0px;
+}
+
+.filter-label {
+	display:			inline-block;
+	width: 				150px;
+	margin:				0px;
+	padding-left: 		0px;
+	padding-right:		14px;
+	text-align:			right;
+}
+
+.filter-control-list-item {
+	margin-left:		10px;
+}
+
+
+.sort-label {
+	display: 	inline-block;
+}
+
+#SortSelect {
+	display:	inline-block;
 }
 
 

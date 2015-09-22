@@ -19,45 +19,55 @@
 
 	  <!-- Sort box filter controls container -->
       <div class="modal-body text-center">
-      
-        <!-- Price filter controls -->
-        <h6><i class="fa fa-sort-amount-desc"></i> Sort:</h6>
-        <select id="SortSelect" class="c-select">
-          <option value="myorder:asc">Price: Lowest to highest</option>
-          <option value="myorder:desc">Price: Highest to lowest</option>
-        </select>
-        <br>
-        <br>
+      	<ul class="filter-controls">
+        	<!-- Price filter controls -->
+      		<li>
+        		<label class="filter-label" data-filter="all">
+        			Price
+        		</label>
+        		<select id="SortSelect" class="c-select">
+          	  	<option value="random">Default</option>
+          	  	<option value="myorder:asc">Lowest to highest</option>
+          	  	<option value="myorder:desc">Highest to lowest</option>
+        		</select>
+        		<br>
+        		<br>
+          	</li>
+          
+        	<!-- Pets allowed filter controls -->
+        	<li>
+        		<label class="filter filter-label" data-filter="all">
+          			Pets Allowed
+        		</label>
+        		<button type="button" class="filter btn btn-default" data-filter=".category-1">Yes</button> <!-- Filter buttons-->
+        		<button type="button" class="filter btn btn-default" data-filter=".category-2">No</button> <!-- Filter buttons-->
+        	</li>
         
-        <!-- Pets allowed filter controls -->
-        <label class="c-input c-checkbox filter" data-filter="all">
-          <i class="fa fa-paw"></i> Pets Allowed
-        </label>
-        <br>
-        <button type="button" class="filter btn btn-default" data-filter="all">Show All</button><!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-1">With Pets</button> <!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-2">No Pets</button> <!-- Filter buttons-->
-        <br>
+        	<br>
+                         
+        	<!-- Property type filter controls -->
+        	<li>
+        		<label class="filter-label" data-filter="all">
+          			Property Type
+        		</label>
+        		<button type="button" class="filter btn btn-default" data-filter=".category-3">House</button> <!-- Filter buttons-->
+        		<button type="button" class="filter btn btn-default" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
+        		<button type="button" class="filter btn btn-default" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
+        	</li>
+        	
+        	<br>
         
-        <!-- Property type filter controls -->
-        <label class="c-input c-checkbox filter" data-filter="all">
-          Property Type
-        </label>
-        <br>
-        <button type="button" class="filter btn btn-default" data-filter=".category-3">House</button> <!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
-        <br>
-        
-        <!-- Furnished state filter controls -->
-        <label class="c-input c-checkbox filter" data-filter="all">
-          Furniture
-        </label>
-        <br>
-        <button type="button" class="filter btn btn-default" data-filter=".category-6">Furnished</button> <!-- Filter buttons-->
-        <button type="button" class="filter btn btn-default" data-filter=".category-7">Not Furnished</button> <!-- Filter buttons-->
-        <br>
-        <br>
+        	<!-- Furnished state filter controls -->
+        	<li>
+        		<label class="filter-label" data-filter="all">
+          			Furnished State
+        		</label>
+        		<button type="button" class="filter btn btn-default" data-filter=".category-6">Furnished</button> <!-- Filter buttons-->
+        		<button type="button" class="filter btn btn-default" data-filter=".category-7">Not Furnished</button> <!-- Filter buttons-->
+        		<br>
+        		<br>
+        	</li>
+      	</ul>
       </div>
 
 	  <!-- Show all properties button -->
