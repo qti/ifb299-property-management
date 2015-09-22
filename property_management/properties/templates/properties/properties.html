@@ -16,28 +16,41 @@
       </div>
       <div class="modal-body text-center">
         <h6><i class="fa fa-sort-amount-desc"></i> Sort:</h6>
-        <select class="c-select">
-          <option selected>Price: Lowest to highest</option>
-          <option value="1">Price: Highest to lowest</option>
+        <select id="SortSelect" class="c-select">
+          <option value="myorder:asc">Price: Lowest to highest</option>
+          <option value="myorder:desc">Price: Highest to lowest</option>
         </select>
           <br>
           <br>
-        <label class="c-input c-checkbox filter" data-filter=".category-1">
-          <input type="checkbox">
-          <span class="c-indicator"></span>
+        <label class="c-input c-checkbox filter" data-filter="all">
           <i class="fa fa-paw"></i> Pets Allowed
         </label>
         <br>
-        <button type="button" class="filter" data-filter="all">Show All</button><!-- Filter buttons-->
-        <br>
-        <button type="button" class="filter" data-filter=".category-1">With Pets</button> <!-- Filter buttons-->
-        <br>
-        <button type="button" class="filter" data-filter=".category-2">No Pets</button> <!-- Filter buttons-->
-        <br>
+        <button type="button" class="filter btn btn-default" data-filter="all">Show All</button><!-- Filter buttons-->
+        <button type="button" class="filter btn btn-default" data-filter=".category-1">With Pets</button> <!-- Filter buttons-->
+        <button type="button" class="filter btn btn-default" data-filter=".category-2">No Pets</button> <!-- Filter buttons-->
+		<br />
+		<label class="c-input c-checkbox filter" data-filter="all">
+          Property Type
+        </label>
+		<br />
+		<button type="button" class="filter btn btn-default" data-filter=".category-3">House</button> <!-- Filter buttons-->
+		<button type="button" class="filter btn btn-default" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
+		<button type="button" class="filter btn btn-default" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
+		<br />
+		<label class="c-input c-checkbox filter" data-filter="all">
+          Furniture
+        </label>
+		<br />
+		<button type="button" class="filter btn btn-default" data-filter=".category-6">Furnished</button> <!-- Filter buttons-->
+		<button type="button" class="filter btn btn-default" data-filter=".category-7">Not Furnished</button> <!-- Filter buttons-->
+		<br />
+		<br />
+		
       </div>
+	  
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Apply</button>
+        <button type="button" class="filter btn btn-primary" data-filter="all">Show All</button><!-- Filter buttons-->
       </div>
     </div>
   </div>
@@ -56,10 +69,18 @@
   {% for property in properties %}
   
     <!--  -->
-  	{% if property.pets_allowed %}
-    	<div class="mix category-1">
-    {% else %}
-    	<div class="mix category-2">
+  	{%if property.pets_allowed and property.property_type == "House"%}
+	<div class="mix category-1 category-3" data-myorder= {{ property.rent_cost }} >
+	{% elif property.pets_allowed and property.property_type == "Appartment"%}
+	<div class="mix category-1 category-4" data-myorder= {{ property.rent_cost }} >
+	{% elif property.pets_allowed and property.property_type == "Campus"%}
+	<div class="mix category-1 category-5" data-myorder= {{ property.rent_cost }} >
+	{% elif  not property.pets_allowed and property.property_type == "House"%}
+	<div class="mix category-2 category-3" data-myorder= {{ property.rent_cost }} >
+	{% elif not property.pets_allowed and property.property_type == "Appartment"%}
+	<div class="mix category-2 category-4" data-myorder= {{ property.rent_cost }} >
+	{% elif property.pets_allowed and property.property_type == "Campus"%}
+	<div class="mix category-2 category-5" data-myorder= {{ property.rent_cost }} >
     {% endif %}
 
 
@@ -127,6 +148,23 @@
 
 {% block scripts %}
   <script>
-    $('#Container').mixItUp()
+var $filterSelect = $('#FilterSelect'),
+      $sortSelect = $('#SortSelect'),
+      $container = $('#Container');
+  
+  $container.mixItUp();
+  $('#Container').mixItUp({
+    load: {
+      filter: '.category-1'
+    },
+  
+});
+$filterSelect.on('change', function(){
+    $container.mixItUp('filter', this.value);
+  });
+  
+  $sortSelect.on('change', function(){
+    $container.mixItUp('sort', this.value);
+  });
   </script>
 {% endblock %}
