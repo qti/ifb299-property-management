@@ -6,16 +6,21 @@
 <br>
 <br>
 
-<!-- Sort properties filter box -->
+<!-- Sorting Filter Box -->
 <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+    
+      <!-- Sort box header and title container -->
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridModalLabel">Sort and Filter</h4>
       </div>
 
+	  <!-- Sort box filter controls container -->
       <div class="modal-body text-center">
+      
+        <!-- Price filter controls -->
         <h6><i class="fa fa-sort-amount-desc"></i> Sort:</h6>
         <select id="SortSelect" class="c-select">
           <option value="myorder:asc">Price: Lowest to highest</option>
@@ -23,6 +28,8 @@
         </select>
         <br>
         <br>
+        
+        <!-- Pets allowed filter controls -->
         <label class="c-input c-checkbox filter" data-filter="all">
           <i class="fa fa-paw"></i> Pets Allowed
         </label>
@@ -31,6 +38,8 @@
         <button type="button" class="filter btn btn-default" data-filter=".category-1">With Pets</button> <!-- Filter buttons-->
         <button type="button" class="filter btn btn-default" data-filter=".category-2">No Pets</button> <!-- Filter buttons-->
         <br>
+        
+        <!-- Property type filter controls -->
         <label class="c-input c-checkbox filter" data-filter="all">
           Property Type
         </label>
@@ -39,6 +48,8 @@
         <button type="button" class="filter btn btn-default" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
         <button type="button" class="filter btn btn-default" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
         <br>
+        
+        <!-- Furnished state filter controls -->
         <label class="c-input c-checkbox filter" data-filter="all">
           Furniture
         </label>
@@ -49,6 +60,7 @@
         <br>
       </div>
 
+	  <!-- Show all properties button -->
       <div class="modal-footer">
         <button type="button" class="filter btn btn-primary" data-filter="all">Show All</button><!-- Filter buttons-->
       </div>
