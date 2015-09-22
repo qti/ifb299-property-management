@@ -6,6 +6,7 @@
 <br>
 <br>
 
+<!-- Sort properties filter box -->
 <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -13,77 +14,164 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridModalLabel">Sort and Filter</h4>
       </div>
+
       <div class="modal-body text-center">
         <h6><i class="fa fa-sort-amount-desc"></i> Sort:</h6>
-        <select class="c-select">
-          <option selected>Lowest to highest</option>
-          <option value="1">Highest to lowest</option>
+        <select id="SortSelect" class="c-select">
+          <option value="myorder:asc">Price: Lowest to highest</option>
+          <option value="myorder:desc">Price: Highest to lowest</option>
         </select>
-          <br>
-          <br>
-        <label class="c-input c-checkbox">
-          <input type="checkbox">
-          <span class="c-indicator"></span>
+        <br>
+        <br>
+        <label class="c-input c-checkbox filter" data-filter="all">
           <i class="fa fa-paw"></i> Pets Allowed
         </label>
+        <br>
+        <button type="button" class="filter btn btn-default" data-filter="all">Show All</button><!-- Filter buttons-->
+        <button type="button" class="filter btn btn-default" data-filter=".category-1">With Pets</button> <!-- Filter buttons-->
+        <button type="button" class="filter btn btn-default" data-filter=".category-2">No Pets</button> <!-- Filter buttons-->
+        <br>
+        <label class="c-input c-checkbox filter" data-filter="all">
+          Property Type
+        </label>
+        <br>
+        <button type="button" class="filter btn btn-default" data-filter=".category-3">House</button> <!-- Filter buttons-->
+        <button type="button" class="filter btn btn-default" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
+        <button type="button" class="filter btn btn-default" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
+        <br>
+        <label class="c-input c-checkbox filter" data-filter="all">
+          Furniture
+        </label>
+        <br>
+        <button type="button" class="filter btn btn-default" data-filter=".category-6">Furnished</button> <!-- Filter buttons-->
+        <button type="button" class="filter btn btn-default" data-filter=".category-7">Not Furnished</button> <!-- Filter buttons-->
+        <br>
+        <br>
       </div>
+
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Apply</button>
+        <button type="button" class="filter btn btn-primary" data-filter="all">Show All</button><!-- Filter buttons-->
       </div>
+
     </div>
   </div>
 </div>
 
-  <button type="button" class="btn btn-primary fixed" data-toggle="modal" data-target="#gridSystemModal">
-    <i class="fa fa-sliders"></i>
-  </button>
+<button type="button" class="btn btn-primary fixed" data-toggle="modal" data-target="#gridSystemModal">
+  <i class="fa fa-sliders"></i>
+</button>
+
+<!-- Display a list of properties available. Properties are fetched from the database. -->
+<div id="Container" class="container">
+
+  <!-- Dynamic generate a property card for every property in the database -->
+  {% for result in page.object_list %}
+
+    {% if result.object.pets_allowed and result.object.property_type == 'House' %}
+      <div class="mix category-1 category-3" data-myorder="{{ result.object.rent_cost }}" style="display: inline-block;">
+    {% elif result.object.pets_allowed and result.object.property_type == 'Apartment' %}
+      <div class="mix category-1 category-4" data-myorder="{{ result.object.rent_cost }}" style="display: inline-block;">
+    {% elif result.object.pets_allowed and result.object.property_type == 'Campus' %}
+      <div class="mix category-1 category-5" data-myorder="{{ result.object.rent_cost }}" style="display: inline-block;">
+    {% elif not result.object.pets_allowed and result.object.property_type == 'House' %}
+      <div class="mix category-2 category-3" data-myorder="{{ result.object.rent_cost }}" style="display: inline-block;">
+    {% elif not result.object.pets_allowed and result.object.property_type == 'Apartment' %}
+      <div class="mix category-2 category-4" data-myorder="{{ result.object.rent_cost }}" style="display: inline-block;">
+    {% elif not result.object.pets_allowed and result.object.property_type == 'Campus' %}
+      <div class="mix category-2 category-5" data-myorder="{{ result.object.rent_cost }}" style="display: inline-block;">
+    {% endif %}
+
+    <!-- Individual property information card -->
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-block">
+          <!-- Pull property manager contact information/phone number from the database -->
+          <h4 class="card-title">{{ result.object.name }}</h4>
+          <!-- Pull rent cost information from the database -->
+          <h6 class="card-subtitle text-muted"><i class="fa fa-usd"></i> {{ result.object.rent_cost }} p/w</h6>
+        </div> <!-- end div card-block -->
+
+        <!-- Property image displayed on the property's card -->
+        <div class="img-container">
+          <!-- Pull property image web link from database -->
+          <img src="{{ result.object.image }}" alt="Card image">
+        </div> <!-- end div img-container-->
+
+        <!-- Pull the property address information from the database -->
+        <li class="list-group-item">
+          <!-- House number and street name -->
+          <div class=""><i class="fa fa-map-marker"></i> {{ result.object.house_number }} {{ result.object.street }}</div>
+          <!-- Suburb name -->
+          <div class="property-card-address-indent">{{ result.object.suburb }}</div>
+          <!-- State and postcode -->
+          <div class="property-card-address-indent">{{ result.object.state }} {{ result.object.postcode }}</div>
+        </li>
+
+        <!-- Indicate whether pets are allowed or not -->
+        <li class="list-group-item">
+          <i class="fa fa-paw"></i>
+          <!-- If pets are allowed, display the text indicating so -->
+          {% if result.object.pets_allowed %}
+            Pets allowed
+          <!-- If pets are not allowed, display the text indicating so -->
+          {% else %}
+            Pets not allowed
+          {% endif %}
+        </li>
+
+        <li class="list-group-item">
+          <!-- Pull property manager contact information/phone number from the database -->
+          <i class="fa fa-phone"></i> {{ result.object.contact_information }}
+        </li>
+
+        <!-- Dynamically generate link to individual property page for this property using it's primary key -->
+        <div class="card-block">
+          <a href="{% url 'properties:detail' result.object.pk %}" class="card-link">More details</a>
+        </div> <!-- end card-block-->
+      </div><!-- end div card-->
+    </div> <!-- end div col-sm-4-->
 
 
-
-<div class="container">
-    <div class="row">
-    <!-- Dynamically generate property cards for each property in the database -->
-    {% for result in page.object_list %}
-      <div class="col-sm-4">
-        <div class="card">
-          <div class="card-block">
-            <h4 class="card-title">{{ result.object.name }}</h4>
-            <h6 class="card-subtitle text-muted"><i class="fa fa-usd"></i> {{ result.object.rent_cost }} p/w</h6>
-          </div>
-          <div class="img-container">
-            <img src="{{ result.object.image }}" alt="Card image">
-          </div>
-          <li class="list-group-item">
-            <i class="fa fa-map-marker"></i> {{ result.object.address }}
-          </li>
-
-          <!-- indicate whether pets are allowed or not -->
-          <li class="list-group-item">
-            <i class="fa fa-paw"></i>
-            {% if result.object.pets_allowed %}
-              Yes
-            {% else %}
-              No
-            {% endif %}
-          </li>
-
-          <li class="list-group-item">
-            <i class="fa fa-phone"></i> {{ result.object.contact_information }}
-          </li>
-
-          <div class="card-block">
-            <a href="{% url 'properties:detail' result.object.pk %}" class="card-link">More details</a>
-          </div>
-        </div>
+    {% if result.object.pets_allowed and result.object.property_type == 'House' %}
+     </div>
+    {% elif result.object.pets_allowed and result.object.property_type == 'Apartment' %}
       </div>
-      {% if forloop.counter|divisibleby:3 %}
-        </div>
-        <div class="row">
-      {% endif %}
-    {% empty %}
-      <h2>No results found.</h2>
-    {% endfor %}
-    </div>
-</div>
+    {% elif result.object.pets_allowed and result.object.property_type == 'Campus' %}
+      </div>
+    {% elif not result.object.pets_allowed and result.object.property_type == 'House' %}
+      </div>
+    {% elif not result.object.pets_allowed and result.object.property_type == 'Apartment' %}
+      </div>
+    {% elif not result.object.pets_allowed and result.object.property_type == 'Campus' %}
+      </div>
+    {% endif %}
+
+  {% empty %}
+    <h2>No results found.</h2>
+  {% endfor %}
+</div> <!--end container-->
+{% endblock %}
+
+{% block scripts %}
+<script>
+  var $filterSelect = $('#FilterSelect'),
+      $sortSelect   = $('#SortSelect'),
+      $container    = $('#Container');
+
+  $container.mixItUp();
+
+  $('#Container').mixItUp({
+    load: {
+      filter: '.category-1'
+    }
+  });
+
+  $filterSelect.on('change', function() {
+    $container.mixItUp('filter', this.value);
+  });
+
+  $sortSelect.on('change', function() {
+    $container.mixItUp('sort', this.value);
+  });
+</script>
 {% endblock %}
