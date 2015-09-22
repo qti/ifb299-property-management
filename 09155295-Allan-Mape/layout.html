@@ -1,0 +1,64 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+      
+    <meta name="theme-color" content="#004BA8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#004BA8">
+    <!-- Bootstrap CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Cinzel+Decorative:700|Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'properties/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    {% block scripts %}{% endblock %}
+
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-light bg-faded">
+      <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
+      <a class="navbar-brand" href="{% url 'views.index' %}">M</a>
+      <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+      <ul class="nav navbar-nav">
+        {% if request.path == '/' %}
+          <li class="nav-item active">
+        {% else %}
+          <li class="nav-item">
+        {% endif %}
+          <a class="nav-link" href="{% url 'views.index' %}">Home</a>
+        </li>
+        {% if 'properties/' in request.path %}
+          <li class="nav-item active">
+        {% else %}
+          <li class="nav-item">
+        {% endif %}
+          <a class="nav-link" href="{% url 'properties:list' %}">Properties</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline navbar-form pull-right" method="get" action="{% url 'properties:haystack_search' %}">
+        <input class="form-control" type="text" placeholder="Search" name="q">&nbsp;
+        <button class="btn btn-success-outline pull-right" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+      </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+	<script src="{% static 'properties/mains.js' %}"></script>
+  </body>
+</html>
