@@ -55,11 +55,9 @@
   <!-- Dynamic generate a property card for every property in the database -->
   {% for property in properties %}
   
-  	<!-- Filter/sort properties by pets allowed -->
-  	<!-- If pets allowed filter is selected, only show properties that allow pets -->
-    {% if property.pets_allowed %}
+    <!--  -->
+  	{% if property.pets_allowed %}
     	<div class="mix category-1">
-    <!-- Otherwise, only show properties that do not allow pets -->
     {% else %}
     	<div class="mix category-2">
     {% endif %}
