@@ -14,7 +14,11 @@ class Property(models.Model):
     """
     name = models.CharField(max_length=255, default='House listing')
     address = models.CharField(max_length=255)
+    house_number = models.CharField(max_length=255, default='')
+    street = models.CharField(max_length=255, default='')
     suburb = models.CharField(max_length=255, default='')
+    state = models.CharField(max_length=255, default='')
+    postcode = models.CharField(max_length=255, default='')
     rent_cost = models.IntegerField(default=0)
     description = models.TextField()
     pets_allowed = models.BooleanField(default=False)
