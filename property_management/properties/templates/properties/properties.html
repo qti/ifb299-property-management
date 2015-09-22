@@ -10,10 +10,12 @@
 <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+    
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="gridModalLabel">Sort and Filter</h4>
       </div>
+      
       <div class="modal-body text-center">
         <h6><i class="fa fa-sort-amount-desc"></i> Sort:</h6>
         <select id="SortSelect" class="c-select">
@@ -29,29 +31,29 @@
         <button type="button" class="filter btn btn-default" data-filter="all">Show All</button><!-- Filter buttons-->
         <button type="button" class="filter btn btn-default" data-filter=".category-1">With Pets</button> <!-- Filter buttons-->
         <button type="button" class="filter btn btn-default" data-filter=".category-2">No Pets</button> <!-- Filter buttons-->
-		<br />
+		<br>
 		<label class="c-input c-checkbox filter" data-filter="all">
           Property Type
         </label>
-		<br />
+		<br>
 		<button type="button" class="filter btn btn-default" data-filter=".category-3">House</button> <!-- Filter buttons-->
 		<button type="button" class="filter btn btn-default" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
 		<button type="button" class="filter btn btn-default" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
-		<br />
+		<br>
 		<label class="c-input c-checkbox filter" data-filter="all">
           Furniture
         </label>
-		<br />
+		<br>
 		<button type="button" class="filter btn btn-default" data-filter=".category-6">Furnished</button> <!-- Filter buttons-->
 		<button type="button" class="filter btn btn-default" data-filter=".category-7">Not Furnished</button> <!-- Filter buttons-->
-		<br />
-		<br />
-		
+		<br>
+		<br>
       </div>
 	  
       <div class="modal-footer">
         <button type="button" class="filter btn btn-primary" data-filter="all">Show All</button><!-- Filter buttons-->
       </div>
+      
     </div>
   </div>
 </div>
@@ -67,18 +69,18 @@
   <!-- Dynamic generate a property card for every property in the database -->
   {% for property in properties %}
   
-  	{% if property.pets_allowed and property.property_type == "House" %}
-		<div class="mix category-1 category-3" data-myorder="{{ property.rent_cost }}" style"display: inline-block;">
+  	{% if  	property.pets_allowed and property.property_type == "House" %}
+		<div class="mix category-1 category-3" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
 	{% elif property.pets_allowed and property.property_type == "Apartment" %}
-		<div class="mix category-1 category-4" data-myorder="{{ property.rent_cost }}" style"display: inline-block;">
+		<div class="mix category-1 category-4" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
 	{% elif property.pets_allowed and property.property_type == "Campus" %}
-		<div class="mix category-1 category-5" data-myorder="{{ property.rent_cost }}" style"display: inline-block;">
-	{% elif  not property.pets_allowed and property.property_type == "House" %}
-		<div class="mix category-2 category-3" data-myorder="{{ property.rent_cost }}" style"display: inline-block;">
+		<div class="mix category-1 category-5" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+	{% elif not property.pets_allowed and property.property_type == "House" %}
+		<div class="mix category-2 category-3" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
 	{% elif not property.pets_allowed and property.property_type == "Apartment" %}
-		<div class="mix category-2 category-4" data-myorder="{{ property.rent_cost }}" style"display: inline-block;">
-	{% elif property.pets_allowed and property.property_type == "Campus" %}
-		<div class="mix category-2 category-5" data-myorder="{{ property.rent_cost }}" style"display: inline-block;">
+		<div class="mix category-2 category-4" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+	{% elif not property.pets_allowed and property.property_type == "Campus" %}
+		<div class="mix category-2 category-5" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
     {% endif %}
 
 
@@ -138,17 +140,17 @@
      </div> <!-- end div col-sm-4-->
     
     
-    {%if property.pets_allowed and property.property_type == "House"%}
+    {% if 	property.pets_allowed and property.property_type == "House" %}
 		</div>
-	{% elif property.pets_allowed and property.property_type == "Apartment"%}
+	{% elif property.pets_allowed and property.property_type == "Apartment" %}
 		</div>
-	{% elif property.pets_allowed and property.property_type == "Campus"%}
+	{% elif property.pets_allowed and property.property_type == "Campus" %}
 		</div>
-	{% elif  not property.pets_allowed and property.property_type == "House"%}
+	{% elif not property.pets_allowed and property.property_type == "House" %}
 		</div>
-	{% elif not property.pets_allowed and property.property_type == "Apartment"%}
+	{% elif not property.pets_allowed and property.property_type == "Apartment" %}
 		</div>
-	{% elif property.pets_allowed and property.property_type == "Campus"%}
+	{% elif not property.pets_allowed and property.property_type == "Campus" %}
 		</div>
     {% endif %}
     
