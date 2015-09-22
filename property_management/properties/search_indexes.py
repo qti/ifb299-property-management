@@ -9,6 +9,7 @@ class PropertyIndex(indexes.SearchIndex, indexes.Indexable):
     address = indexes.CharField(model_attr='address')
     pets_allowed = indexes.BooleanField(model_attr='pets_allowed')
     contact_information = indexes.CharField(model_attr='contact_information')
+    property_type = indexes.CharField(model_attr='property_type')
 
     def get_model(self):
         return Property
