@@ -17,7 +17,7 @@
         <h4 class="modal-title" id="gridModalLabel">Sort and Filter</h4>
       </div>
 
-	  <!-- Sort box filter controls container -->
+    <!-- Sort box filter controls container -->
       <div class="modal-body text-center">
       
         <!-- Price filter controls -->
@@ -28,7 +28,7 @@
         </select>
         <br>
         <br>
-        
+
         <!-- Pets allowed filter controls -->
         <label class="c-input c-checkbox filter" data-filter="all">
           <i class="fa fa-paw"></i> Pets Allowed
@@ -38,7 +38,7 @@
         <button type="button" class="filter btn btn-default" data-filter=".category-1">With Pets</button> <!-- Filter buttons-->
         <button type="button" class="filter btn btn-default" data-filter=".category-2">No Pets</button> <!-- Filter buttons-->
         <br>
-        
+
         <!-- Property type filter controls -->
         <label class="c-input c-checkbox filter" data-filter="all">
           Property Type
@@ -60,7 +60,7 @@
         <br>
       </div>
 
-	  <!-- Show all properties button -->
+    <!-- Show all properties button -->
       <div class="modal-footer">
         <button type="button" class="filter btn btn-primary" data-filter="all">Show All</button><!-- Filter buttons-->
       </div>
@@ -79,7 +79,7 @@
   <!-- Dynamic generate a property card for every property in the database -->
   {% for property in properties %}
 
-    {% if   property.pets_allowed and property.property_type == 'House' %}
+    {% if property.pets_allowed and property.property_type == 'House' %}
       <div class="mix category-1 category-3" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
     {% elif property.pets_allowed and property.property_type == 'Apartment' %}
       <div class="mix category-1 category-4" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
