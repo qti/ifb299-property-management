@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- Display images for an individual property in the form of an image carousel -->
+<div id="Carousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <!-- Display the first image for the individual property -->
+    <div class="carousel-item active">
+      <!-- Fetch the first image of the property from the database -->
+      <img src="{{ individual_property.image }}" alt="First slide">
+    </div>
+
+    <!-- Display the second image for the individual property -->
+    <div class="carousel-item">
+      <!-- Fetch the second image of the property from the database -->
+      <img src="{{ individual_property.image2 }}" alt="Second slide">
+    </div>
+
+    <!-- Display the third image for the individual property -->
+    <div class="carousel-item">
+      <!-- Fetch the third image of the property from the database -->
+      <img src="{{ individual_property.image3 }}" alt="Third slide">
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<!-- Display property type, number of bedrooms, number of bathrooms, number of car spaces -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">  
+      <!-- Fetch the property's name from the database -->    
+      <h1>{{ individual_property.name }}</h1>
+    </div>
+
+    <!-- Display key information about the property in the form of little icons -->  
+    <div class="col-md-4">
+      <!-- Fetch the property type from the database -->
+      <span class="label label-pill label-default"><i class="fa fa-home"></i> {{ individual_property.property_type }}</span>
+      <!-- Fetch the number of bedrooms from the database -->
+      <span class="label label-pill label-default"><i class="fa fa-bed"></i> {{ individual_property.bedrooms }}</span>
+      <!-- Fetch the number of bathrooms from the database -->
+      <span class="label label-pill label-default"><i class="fa fa-male"></i> {{ individual_property.bathrooms }}</span>
+      <!-- Fetch the number of car spaces from the database -->
+      <span class="label label-pill label-default"><i class="fa fa-car"></i> {{ individual_property.car_spaces }}</span>   
+    </div>
+  </div>
+
+  <!-- Display a description of the property -->  
+  <div class="row">
+    <div class="col-md-8">
+      <!-- Fetch the property's description from the database -->  
+      <p>{{ individual_property.description }}</p>
+    </div>
+
+    <!-- Display the property information such as property manager details, rent cost, address, are pets allowed? -->  
+    <div class="col-md-4">
+      <div class="card">
+        <!-- Display the property manager's details -->  
+        <div class="card-block">
+          <!-- Fetch the property manager's name from the database -->  
+          <h4 class="card-title">Manager's name</h4>
+          <!-- Fetch the property manager's name from the database -->  
+          <p><i class="fa fa-phone"></i> {{ individual_property.contact_information }}</p>
+        </div>
+
+        <!-- Display property details such as rent cost, address, are pets allowed? -->  
+        <ul class="list-group list-group-flush">
+        <!-- Fetch the property's rent cost from the database -->  
+        <li class="list-group-item"><i class="fa fa-usd"></i> {{ individual_property.rent_cost }} per week</li>
+        <!-- Fetch the property's address from the database -->  
+        <li class="list-group-item"><i class="fa fa-map-marker"></i> {{ individual_property.address }}</li>
+        <!-- Fetch pets allowed status from the database -->  
+        <li class="list-group-item"><i class="fa fa-paw"></i> 
+          <!-- If pets are allowed, display text to indicate so -->  
+          {% if individual_property.pets_allowed %}
+            Pets allowed
+          <!-- Otherwise if pets are not allowed, display text to indicate so -->
+          {% else %}
+            Pets not allowed
+          {% endif %}
+        </li>
+        </ul> 
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Bootstrap carousel
+  $('#Carousel').carousel();
+</script>
+{% endblock %}
