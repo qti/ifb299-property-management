@@ -92,18 +92,30 @@
   {% for property in properties %}
   
 	<!-- Sorting filters conditions -->
-    {% if property.pets_allowed and property.property_type == 'House' %}
-      <div class="mix category-1 category-3" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif property.pets_allowed and property.property_type == 'Apartment' %}
-      <div class="mix category-1 category-4" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif property.pets_allowed and property.property_type == 'Campus' %}
-      <div class="mix category-1 category-5" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif not property.pets_allowed and property.property_type == 'House' %}
-      <div class="mix category-2 category-3" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif not property.pets_allowed and property.property_type == 'Apartment' %}
-      <div class="mix category-2 category-4" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif not property.pets_allowed and property.property_type == 'Campus' %}
-      <div class="mix category-2 category-5" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% if property.pets_allowed and property.property_type == 'House' and property.furnished_state %}
+      <div class="mix category-1 category-3 category-6" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif property.pets_allowed and property.property_type == 'Apartment' and property.furnished_state %}
+      <div class="mix category-1 category-4 category-6" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif property.pets_allowed and property.property_type == 'Campus' and property.furnished_state %}
+      <div class="mix category-1 category-5 category-6" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'House' and property.furnished_state %}
+      <div class="mix category-2 category-3 category-6" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'Apartment' and property.furnished_state %}
+      <div class="mix category-2 category-4 category-6" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'Campus' and property.furnished_state %}
+      <div class="mix category-2 category-5 category-6" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+	{% elif property.pets_allowed and property.property_type == 'House' and not property.furnished_state %}
+      <div class="mix category-1 category-3 category-7" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif property.pets_allowed and property.property_type == 'Apartment' and not property.furnished_state %}
+      <div class="mix category-1 category-4 category-7" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif property.pets_allowed and property.property_type == 'Campus' and not property.furnished_state %}
+      <div class="mix category-1 category-5 category-7" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'House' and not property.furnished_state %}
+      <div class="mix category-2 category-3 category-7" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'Apartment' and not property.furnished_state %}
+      <div class="mix category-2 category-4 category-7" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'Campus' and not property.furnished_state %}
+      <div class="mix category-2 category-5 category-7" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
     {% endif %}
 
     <!-- Individual property information card -->
