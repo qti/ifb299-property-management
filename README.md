@@ -37,6 +37,7 @@ property_management/properties/models.py
 6. tests.py
 property_management/properties/tests.py
 
+Many of the other files contain code that was created by the team though are not listed due to there being many minor files.
 
 ## System architecture
 
