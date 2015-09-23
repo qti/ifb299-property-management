@@ -24,12 +24,14 @@
         	<!-- Price filter controls -->
       		<li>
         		<label class="filter-label" data-filter="all">
-        			Price
+        			Sort by:
         		</label>
         		<select id="SortSelect" class="c-select">
           	  	<option value="random">Default</option>
-          	  	<option value="myorder:asc">Lowest to highest</option>
-          	  	<option value="myorder:desc">Highest to lowest</option>
+          	  	<option value="myorder:asc">Price: Lowest to highest</option>
+          	  	<option value="myorder:desc">Price: Highest to lowest</option>
+				<option value="suburb:asc">Suburb: Ascending</option>
+          	  	<option value="suburb:desc">Suburb: Descending</option>
         		</select>
         		<br>
         		<br>
@@ -92,18 +94,30 @@
   {% for property in properties %}
   
 	<!-- Sorting filters conditions -->
-    {% if property.pets_allowed and property.property_type == 'House' %}
-      <div class="mix category-1 category-3" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif property.pets_allowed and property.property_type == 'Apartment' %}
-      <div class="mix category-1 category-4" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif property.pets_allowed and property.property_type == 'Campus' %}
-      <div class="mix category-1 category-5" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif not property.pets_allowed and property.property_type == 'House' %}
-      <div class="mix category-2 category-3" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif not property.pets_allowed and property.property_type == 'Apartment' %}
-      <div class="mix category-2 category-4" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
-    {% elif not property.pets_allowed and property.property_type == 'Campus' %}
-      <div class="mix category-2 category-5" data-myorder="{{ property.rent_cost }}" style="display: inline-block;">
+    {% if property.pets_allowed and property.property_type == 'House' and property.furnished_state %}
+      <div class="mix category-1 category-3 category-6" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif property.pets_allowed and property.property_type == 'Apartment' and property.furnished_state %}
+      <div class="mix category-1 category-4 category-6" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif property.pets_allowed and property.property_type == 'Campus' and property.furnished_state %}
+      <div class="mix category-1 category-5 category-6" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'House' and property.furnished_state %}
+      <div class="mix category-2 category-3 category-6" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'Apartment' and property.furnished_state %}
+      <div class="mix category-2 category-4 category-6" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'Campus' and property.furnished_state %}
+      <div class="mix category-2 category-5 category-6" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+	{% elif property.pets_allowed and property.property_type == 'House' and not property.furnished_state %}
+      <div class="mix category-1 category-3 category-7" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif property.pets_allowed and property.property_type == 'Apartment' and not property.furnished_state %}
+      <div class="mix category-1 category-4 category-7" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif property.pets_allowed and property.property_type == 'Campus' and not property.furnished_state %}
+      <div class="mix category-1 category-5 category-7" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'House' and not property.furnished_state %}
+      <div class="mix category-2 category-3 category-7" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'Apartment' and not property.furnished_state %}
+      <div class="mix category-2 category-4 category-7" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
+    {% elif not property.pets_allowed and property.property_type == 'Campus' and not property.furnished_state %}
+      <div class="mix category-2 category-5 category-7" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
     {% endif %}
 
     <!-- Individual property information card -->
