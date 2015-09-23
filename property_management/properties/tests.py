@@ -271,13 +271,13 @@ class SeleniumTests(LiveServerTestCase):
     def test_filter_lowhigh(self):
         self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
         self.selenium.find_element_by_xpath("(//button[@type='button'])[11]").click()
-        Select(self.selenium.find_element_by_id("SortSelect")).select_by_visible_text("Lowest to highest")
+        Select(self.selenium.find_element_by_id("SortSelect")).select_by_visible_text("Price: Lowest to highest")
         self.selenium.find_element_by_css_selector("option[value=\"myorder:asc\"]").click()
         self.selenium.find_element_by_css_selector("button.close").click()
 
     def test_filter_highlow(self):
         self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
         self.selenium.find_element_by_xpath("(//button[@type='button'])[11]").click()
-        Select(self.selenium.find_element_by_id("SortSelect")).select_by_visible_text("Highest to lowest")
+        Select(self.selenium.find_element_by_id("SortSelect")).select_by_visible_text("Price: Highest to lowest")
         self.selenium.find_element_by_css_selector("option[value=\"myorder:asc\"]").click()
         self.selenium.find_element_by_css_selector("button.close").click()
