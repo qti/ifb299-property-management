@@ -540,8 +540,10 @@ h6, .h6 {
 }
 
 .display-2 {
-  font-size: 4.5rem;
-  font-weight: 300;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
 }
 
 .display-3 {
@@ -6387,6 +6389,15 @@ a.bg-danger:hover {
     padding-left: 30px;
     padding-right: 30px;
     text-align: center;
+}
+
+.introm {
+    background-image: url(img/villa2.jpg);
+    background-size: cover;
+    width: auto;
+    height: 100vh;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .propheader {
