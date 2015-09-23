@@ -44,7 +44,7 @@ Many of the other files contain code that was created by the team though are not
 The system architecture revolves around Django model views with SQLite being used for the database. The Django framework ensures that we are efficient and can deliver as much business value in our product to the client in a shorter amount of time.
 
 
-Acceptance testing and test automation tools
+## Acceptance testing and test automation tools
 
 The testing platform involves the use of the Selenium testing framework. Automated testing is deployed through the Travis Continuous Integration platform. 
 
