@@ -2302,9 +2302,9 @@ fieldset[disabled] a.btn {
 .btn-primary:active,
 .btn-primary.active,
 .open > .btn-primary.dropdown-toggle {
-  color: black;
-  background-color: #fff;
-  border-color: #fff;
+  color: #fff;
+  background-color: #05B2DC;
+  border-color: #05B2DC;
 }
 
 .btn-primary:hover {
@@ -2600,10 +2600,10 @@ fieldset[disabled] .btn-primary-outline:hover {
 }
 
 .btn-secondary-outline {
-  color: #004BA8;
+  color: #fff;
   background-color: transparent;
   background-image: none;
-  border-color: #004BA8;
+  border-color: #fff;
 }
 
 .btn-secondary-outline:focus,
@@ -3751,8 +3751,7 @@ input[type="button"].btn-block {
 
 .navbar-brand {
   font-family: 'Cinzel Decorative', cursive;
-  position: absolute;
-  left: 50%;
+  float: left;
   padding-top: .15rem;
   padding-bottom: .15rem;
   margin-right: 1rem;
@@ -5965,11 +5964,10 @@ a.text-danger:hover {
 }
 
 .bg-faded {
-  background: -webkit-linear-gradient(left, #004BA8 , #05B2DC); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(left, #004BA8, #05B2DC); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(left, #004BA8, #05B2DC); /* For Firefox 3.6 to 15 */
+  background: -webkit-linear-gradient(left, #004BA8 , #05B2DC); 
+  background: -o-linear-gradient(left, #004BA8, #05B2DC); 
+  background: -moz-linear-gradient(left, #004BA8, #05B2DC); 
   background: linear-gradient(to right, #004BA8 , #05B2DC);
-  background: rgba(34,34,34,0.9);
 }
 
 .bg-primary {
