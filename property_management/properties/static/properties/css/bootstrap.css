@@ -3755,7 +3755,7 @@ input[type="button"].btn-block {
   padding-top: .15rem;
   padding-bottom: .15rem;
   margin-right: 1rem;
-  font-size: 1.95rem;
+  font-size: 1.45rem;
 }
 
 .navbar-brand:focus,
@@ -5964,10 +5964,10 @@ a.text-danger:hover {
 }
 
 .bg-faded {
-  background: -webkit-linear-gradient(left, #004BA8 , #05B2DC); 
-  background: -o-linear-gradient(left, #004BA8, #05B2DC); 
-  background: -moz-linear-gradient(left, #004BA8, #05B2DC); 
-  background: linear-gradient(to right, #004BA8 , #05B2DC);
+  background: -webkit-linear-gradient(left, rgba(0,75,168,0.9), rgba(5,178,220,0.9));
+  background: -o-linear-gradient(left, rgba(0,75,168,0.9), rgba(5,178,220,0.9)); 
+  background: -moz-linear-gradient(left, rgba(0,75,168,0.9), rgba(5,178,220,0.9)); 
+  background: linear-gradient(to right, rgba(0,75,168,0.9), rgba(5,178,220,0.9));
 }
 
 .bg-primary {
