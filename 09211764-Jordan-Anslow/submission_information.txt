@@ -1,0 +1,19 @@
+1. Layout.html
+
+Wrote the initial templates for use with Django, other teammates used as a basis/standard for writing other templates. Contributed to all templates in our project, this is a specific example and was the first template written.
+
+2. models.py
+
+Wrote the initial models for use with Django, this file defines our database fields in SQLite. I created and provided the first iteration of the file which other members used as an example for further contributions.
+
+3. search_indexes.py
+
+Model file for our search functionality, which is based on django-haystack. This file defines the fields that our search functionality will index for use in our templates.
+
+4. tests.py
+
+Created initial tests for our django models, and added Selenium test functionality. I hooked this up with our continous integration platform and setup a virtual display on our CI to allow Selenium testing to work remotely.
+
+5. User Stories
+
+Contributed to the development of our user stores, as well as negotiating priorities with our client in and outside of class. I also facilitated the creation of user stories by providing planning poker cards and leading the playing.
