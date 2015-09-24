@@ -44,6 +44,9 @@ class Property(models.Model):
     
     # Is the property furnished?
     furnished_state = models.BooleanField(default=False)
+
+    # Is the property furnished, char field
+    furnished_state_char = models.CharField(max_length=50, default='')
     
     # Property manager's contact information
     contact_information = models.TextField() # refactor into JSON field (maybe)

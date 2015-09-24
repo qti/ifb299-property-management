@@ -4,3 +4,4 @@
 {{ object.pets_allowed }}
 {{ object.contact_information }}
 {{ object.property_type }}
+{{ object.furnished_state_char }}
