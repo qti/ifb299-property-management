@@ -2,3 +2,4 @@ django==1.8.4
 selenium>=2.41.0
 django-haystack>=2.4.0
 whoosh>=2.7.0
+django-guardian>=1.3.0
