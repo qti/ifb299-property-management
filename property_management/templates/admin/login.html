@@ -1,7 +1,10 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_static %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />{% endblock %}
+{% block extrastyle %}{{ block.super }}
+<!--<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />-->
+{% endblock %}
+
 
 {% block bodyclass %}{{ block.super }} login{% endblock %}
 
@@ -12,6 +15,8 @@
 {% block content_title %}{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
+
+
 
 {% block content %}
 {% if form.errors and not form.non_field_errors %}
@@ -28,30 +33,60 @@
 {% endfor %}
 {% endif %}
 
-<div id="content-main">
-<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-  <div class="form-row">
+
+<br>
+<br>
+<br>
+<br>
+<div class="hidden-md-down">
+      <div class="introtxt">
+          <h1 style="color: black;" class="display-1">Property <b style="color:#05B2DC;">M</b>anagement</h1>
+          <h3 style="color: #05B2DC;">View and Manage Properties</h3>
+          <br>
+
+      </div>
+      </div>
+      
+      <div class="hidden-lg-up">
+      <div class="introtxt">
+          <h1 style="color: black;" class="display-2">Property Management</h1>
+          <h3 style="color: #05B2DC;">View and Manage Properties</h3>
+          <br>
+
+      </div>
+</div>
+
+
+<form class="loginform" action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+<div class="card center-block">
+<div class="card-header">Welcome</div>
+<div class="card-block">
     {{ form.username.errors }}
-    {{ form.username.label_tag }} {{ form.username }}
-  </div>
-  <div class="form-row">
+    {{ form.username.label_tag }} {{ form.username }}  
+<br>
+<br>
     {{ form.password.errors }}
     {{ form.password.label_tag }} {{ form.password }}
+<br>
     <input type="hidden" name="next" value="{{ next }}" />
-  </div>
   {% url 'admin_password_reset' as password_reset_url %}
   {% if password_reset_url %}
-  <div class="password-reset-link">
+
     <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
-  </div>
   {% endif %}
-  <div class="submit-row">
-    <label>&nbsp;</label><input type="submit" value="{% trans 'Log in' %}" />
-  </div>
+
+<br>
+
+    <button type="button submit" class="btn btn-primary" value="{% trans 'Log in' %}">Login</button>
+
+</div>
+</div>
 </form>
+
 
 <script type="text/javascript">
 document.getElementById('id_username').focus()
 </script>
-</div>
+
+
 {% endblock %}
