@@ -6,6 +6,7 @@ in the form: id = models.AutoField(primary_key=True)
 """
 
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Property(models.Model):
@@ -68,10 +69,14 @@ class Property(models.Model):
     # Number of car spaces
     car_spaces = models.IntegerField(default=0)
 
-    class Meta:
-        permissions = (
-            ('view_property', 'Can view property'),
-        )
+    # Owner
+    owner = models.ForeignKey(User, limit_choices_to={'groups__name': u'owners'}, blank=True, default=0)
+
+    # Manager
+    manager = models.ForeignKey(User, limit_choices_to={'groups__name': u'managers'}, related_name="manager", blank=True, default=0)
+
+    # Tenant information
+    tenant_information = models.TextField(blank=True, default='')
 
     # Identifies self as address name rather than 'Property Object'
     def __str__(self):

@@ -2,15 +2,13 @@
 {% load static from staticfiles %}
 
 {% block extrastyle %}
-<link rel="stylesheet" type="text/css" href="{% static 'properties/css/bootstrap.css' %}" />
-<link href='https://fonts.googleapis.com/css?family=Cinzel+Decorative:700|Roboto:400,300,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/custom.css' %}" />
 {% endblock %}
 
 {% block title %}Property Management{% endblock %}
 
 {% block branding %}
-<a class="navbar-brand" href="{% url 'admin:index' %}">M</a>
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Property Management</a></h1>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
