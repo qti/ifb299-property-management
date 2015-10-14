@@ -3,6 +3,7 @@ Contains unit tests for the properties app
 """
 from django.test import TestCase
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User, Group
 
 # Selenium imports
 from django.test import LiveServerTestCase
@@ -17,6 +18,83 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
 from .models import Property
+
+def create_user_test_accounts(self):
+        # Owners
+        Group.objects.get_or_create(name='owners')
+
+        self.test_owner_one = User.objects.create(
+            username = "bob",
+            password = "password",
+        )
+
+        self.test_owner_two = User.objects.create(
+            username = "alice",
+            password = "password",
+        )
+
+        # Add test users to owners group
+        group = Group.objects.get(name='owners')
+        group.user_set.add(self.test_owner_one)
+        group.user_set.add(self.test_owner_two)
+
+        # Managers
+        Group.objects.get_or_create(name='managers')
+
+        self.test_manager_one = User.objects.create(
+            username = "bobby",
+            password = "password",
+        )
+
+        self.test_manager_two = User.objects.create(
+            username = "chuck",
+            password = "password",
+        )
+
+        # Add test users to managers group
+        group = Group.objects.get(name='managers')
+        group.user_set.add(self.test_manager_one)
+        group.user_set.add(self.test_manager_two)
+
+        # Properties
+        self.test_property_one = Property.objects.create(
+            address = "27 Foo, dev null place, 1337",
+            pets_allowed = False,
+            rent_cost = 400,
+            contact_information = " { 'test': field, 'another': field } ",
+            owner = self.test_owner_one,
+            manager = self.test_manager_one,
+        )
+
+        self.test_property_two = Property.objects.create(
+            name = "Foo Place",
+            address = "99 Foo, dev null place, 0000",
+            rent_cost = 200,
+            description = "Foo foo, foo; foo, foo; foo!",
+            contact_information = " { 'test': field, 'another': field } ",
+            image="http://i.imgur.com/81qyN1y.jpg",
+            owner = self.test_owner_one,
+            manager = self.test_manager_one,
+        )
+
+        self.test_property_three = Property.objects.create(
+            address = "42 Foo, dev null place, 9999",
+            rent_cost = 300,
+            description = "Foo foo, foo; foo, foo; foo!",
+            pets_allowed = True,
+            owner = self.test_owner_two,
+            manager = self.test_manager_two,
+        )
+
+        self.test_property_four = Property.objects.create(
+            address = "356 Foo, dev null place, 12345",
+            description = "Foo foo, foo; foo, foo; foo!",
+            pets_allowed = False,
+            contact_information = " { 'test': field, 'another': field } ",
+            owner = self.test_owner_two,
+            manager = self.test_manager_two,
+        )
+
 
 # Create your tests here.
 class PropertyModelTests(TestCase):
@@ -176,7 +254,7 @@ class PropertyViewsTests(TestCase):
         self.assertEqual(
                 resp.context['properties'].get(pk=1).property_type,
                 self.test_property_one.property_type
-            )    
+            )
 
     def test_bathrooms(self):
         resp = self.client.get(reverse('properties:list'))
@@ -185,7 +263,7 @@ class PropertyViewsTests(TestCase):
         self.assertEqual(
                 resp.context['properties'].get(pk=1).bathrooms,
                 self.test_property_one.bathrooms
-            ) 
+            )
 
     def test_car_spaces(self):
         resp = self.client.get(reverse('properties:list'))
@@ -194,8 +272,16 @@ class PropertyViewsTests(TestCase):
         self.assertEqual(
                 resp.context['properties'].get(pk=1).car_spaces,
                 self.test_property_one.car_spaces
-            )           
+            )
 
+class UserViewsTests(TestCase):
+    def setUp(self):
+        """
+        Instantiate test objects
+        """
+        create_user_test_accounts(self)
+
+    # User view tests here
 
 class SeleniumTests(LiveServerTestCase):
     """
@@ -204,37 +290,9 @@ class SeleniumTests(LiveServerTestCase):
     """
     def setUp(self):
         """
-        Instantiate test properties
+        Instantiate test objects
         """
-        self.test_property_one = Property.objects.create(
-            address = "27 Foo, dev null place, 1337",
-            pets_allowed = False,
-            rent_cost = 400,
-            contact_information = " { 'test': field, 'another': field } ",
-        )
-
-        self.test_property_two = Property.objects.create(
-            name = "Foo Place",
-            address = "99 Foo, dev null place, 0000",
-            rent_cost = 200,
-            description = "Foo foo, foo; foo, foo; foo!",
-            contact_information = " { 'test': field, 'another': field } ",
-            image="http://i.imgur.com/81qyN1y.jpg",
-        )
-
-        self.test_property_three = Property.objects.create(
-            address = "42 Foo, dev null place, 9999",
-            rent_cost = 300,
-            description = "Foo foo, foo; foo, foo; foo!",
-            pets_allowed = True,
-        )
-
-        self.test_property_four = Property.objects.create(
-            address = "356 Foo, dev null place, 12345",
-            description = "Foo foo, foo; foo, foo; foo!",
-            pets_allowed = False,
-            contact_information = " { 'test': field, 'another': field } ",
-        )
+        create_user_test_accounts(self)
 
     @classmethod
     def setUpClass(cls):
@@ -283,23 +341,23 @@ class SeleniumTests(LiveServerTestCase):
         self.selenium.find_element_by_css_selector("button.close").click()
 
     def test_login_no_details(self):
-    	self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
-    	self.selenium.find_element_by_css_selector("input[type=\"submit\"]").click()
-    	self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
+        self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
+        self.selenium.find_element_by_css_selector("input[type=\"submit\"]").click()
+        self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
 
     def login_just_name(self):
-		self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
-		self.selenium.find_element_by_id("id_username").clear()
-		self.selenium.find_element_by_id("id_username").send_keys("admin")
-		self.selenium.find_element_by_css_selector("input[type=\"submit\"]").click()
-		self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
+        self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
+        self.selenium.find_element_by_id("id_username").clear()
+        self.selenium.find_element_by_id("id_username").send_keys("admin")
+        self.selenium.find_element_by_css_selector("input[type=\"submit\"]").click()
+        self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
 
     def login_just_pass(self):
-		self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
-		self.selenium.find_element_by_id("id_password").clear()
-		self.selenium.find_element_by_id("id_password").send_keys("password")
-		self.selenium.find_element_by_css_selector("input[type=\"submit\"]").click()
-		self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
+        self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
+        self.selenium.find_element_by_id("id_password").clear()
+        self.selenium.find_element_by_id("id_password").send_keys("password")
+        self.selenium.find_element_by_css_selector("input[type=\"submit\"]").click()
+        self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
 
     def successful_login_logout(self):
         self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
@@ -312,11 +370,11 @@ class SeleniumTests(LiveServerTestCase):
         self.selenium.find_element_by_link_text("Log out").click()
         self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
 
-	def incorrect_login_details(self):
-		self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
-		self.selenium.find_element_by_id("id_username").clear()
-		self.selenium.find_element_by_id("id_username").send_keys("admin")
-		self.selenium.find_element_by_id("id_password").clear()
-		self.selenium.find_element_by_id("id_password").send_keys("passw1rd")
-		self.selenium.find_element_by_css_selector("input[type=\"submit\"]").click()
-		self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
+    def incorrect_login_details(self):
+        self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
+        self.selenium.find_element_by_id("id_username").clear()
+        self.selenium.find_element_by_id("id_username").send_keys("admin")
+        self.selenium.find_element_by_id("id_password").clear()
+        self.selenium.find_element_by_id("id_password").send_keys("passw1rd")
+        self.selenium.find_element_by_css_selector("input[type=\"submit\"]").click()
+        self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
