@@ -81,3 +81,6 @@ class Property(models.Model):
     # Identifies self as address name rather than 'Property Object'
     def __str__(self):
         return self.address
+
+    class Meta:
+        verbose_name_plural = "Properties"
