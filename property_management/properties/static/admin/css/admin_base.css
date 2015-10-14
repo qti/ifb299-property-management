@@ -849,6 +849,12 @@ table#change-history tbody th {
 
 
   /* Custom CSS */
+ img {
+position: relative !important;
+width: auto !important;
+height: auto !important;
+}
+
 
 .loginform {
     text-align: center;
