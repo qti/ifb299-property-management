@@ -340,11 +340,6 @@ class SeleniumTests(LiveServerTestCase):
         self.selenium.find_element_by_css_selector("option[value=\"myorder:asc\"]").click()
         self.selenium.find_element_by_css_selector("button.close").click()
 
-    def test_login_no_details(self):
-        self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
-        self.selenium.find_element_by_css_selector("input[type=\"submit\"]").click()
-        self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
-
     def login_just_name(self):
         self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
         self.selenium.find_element_by_id("id_username").clear()
