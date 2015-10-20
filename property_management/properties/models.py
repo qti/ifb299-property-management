@@ -78,6 +78,9 @@ class Property(models.Model):
     # Tenant information
     tenant_information = models.TextField(blank=True, default='')
 
+    # Contract information
+    contract_information = models.TextField(blank=True, default='')
+
     # Identifies self as address name rather than 'Property Object'
     def __str__(self):
         return self.address
