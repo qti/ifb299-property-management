@@ -20,57 +20,57 @@
     <!-- Sort box filter controls container -->
       <div class="modal-body text-center">
 
-      	<ul class="filter-controls">
-        	<!-- Price filter controls -->
-      		<li>
-        		<label class="filter-label" data-filter="all">
-        			Sort by:
-        		</label>
-        		<select id="SortSelect" class="c-select">
-          	  	<option value="random">Default</option>
-          	  	<option value="myorder:asc">Price: Lowest to highest</option>
-          	  	<option value="myorder:desc">Price: Highest to lowest</option>
-				<option value="suburb:asc">Suburb: Ascending</option>
-          	  	<option value="suburb:desc">Suburb: Descending</option>
-        		</select>
-        		<br>
-        		<br>
-          	</li>
+        <ul class="filter-controls">
+          <!-- Price filter controls -->
+          <li>
+            <label class="filter-label" data-filter="all">
+              Sort by:
+            </label>
+            <select id="SortSelect" class="c-select">
+                <option value="random">Default</option>
+                <option value="myorder:asc">Price: Lowest to highest</option>
+                <option value="myorder:desc">Price: Highest to lowest</option>
+        <option value="suburb:asc">Suburb: Ascending</option>
+                <option value="suburb:desc">Suburb: Descending</option>
+            </select>
+            <br>
+            <br>
+            </li>
           
-        	<!-- Pets allowed filter controls -->
-        	<li>
-        		<label class="filter filter-label" data-filter="all">
-          			Pets Allowed
-        		</label>
-        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-1">Yes</button> <!-- Filter buttons-->
-        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-2">No</button> <!-- Filter buttons-->
-        	</li>
+          <!-- Pets allowed filter controls -->
+          <li>
+            <label class="filter filter-label" data-filter="all">
+                Pets Allowed
+            </label>
+            <button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-1">Yes</button> <!-- Filter buttons-->
+            <button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-2">No</button> <!-- Filter buttons-->
+          </li>
         
-        	<br>
+          <br>
                          
-        	<!-- Property type filter controls -->
-        	<li>
-        		<label class="filter-label" data-filter="all">
-          			Property Type
-        		</label>
-        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-3">House</button> <!-- Filter buttons-->
-        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
-        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
-        	</li>
-        	
-        	<br>
+          <!-- Property type filter controls -->
+          <li>
+            <label class="filter-label" data-filter="all">
+                Property Type
+            </label>
+            <button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-3">House</button> <!-- Filter buttons-->
+            <button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-4">Apartment</button> <!-- Filter buttons-->
+            <button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-5">Campus</button> <!-- Filter buttons-->
+          </li>
+          
+          <br>
         
-        	<!-- Furnished state filter controls -->
-        	<li>
-        		<label class="filter-label" data-filter="all">
-          			Furnished State
-        		</label>
-        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-6">Furnished</button> <!-- Filter buttons-->
-        		<button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-7">Not Furnished</button> <!-- Filter buttons-->
-        		<br>
-        		<br>
-        	</li>
-      	</ul>
+          <!-- Furnished state filter controls -->
+          <li>
+            <label class="filter-label" data-filter="all">
+                Furnished State
+            </label>
+            <button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-6">Furnished</button> <!-- Filter buttons-->
+            <button type="button" class="filter btn btn-default filter-control-button" data-filter=".category-7">Not Furnished</button> <!-- Filter buttons-->
+            <br>
+            <br>
+          </li>
+        </ul>
 
       </div>
 
@@ -93,7 +93,7 @@
   <!-- Dynamic generate a property card for every property in the database -->
   {% for property in properties %}
   
-	<!-- Sorting filters conditions -->
+  <!-- Sorting filters conditions -->
     {% if property.pets_allowed and property.property_type == 'House' and property.furnished_state %}
       <div class="mix category-1 category-3 category-6" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
     {% elif property.pets_allowed and property.property_type == 'Apartment' and property.furnished_state %}
@@ -106,7 +106,7 @@
       <div class="mix category-2 category-4 category-6" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
     {% elif not property.pets_allowed and property.property_type == 'Campus' and property.furnished_state %}
       <div class="mix category-2 category-5 category-6" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
-	{% elif property.pets_allowed and property.property_type == 'House' and not property.furnished_state %}
+  {% elif property.pets_allowed and property.property_type == 'House' and not property.furnished_state %}
       <div class="mix category-1 category-3 category-7" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
     {% elif property.pets_allowed and property.property_type == 'Apartment' and not property.furnished_state %}
       <div class="mix category-1 category-4 category-7" data-myorder="{{ property.rent_cost }}" data-suburb="{{property.suburb}}" style="display: inline-block;">
@@ -170,8 +170,8 @@
       </div><!-- end div card-->
     </div> <!-- end div col-sm-4-->
 
-	
-	<!-- Closing div tags for the sorting filters conditions -->
+  
+  <!-- Closing div tags for the sorting filters conditions -->
     {% if property.pets_allowed and property.property_type == 'House' %}
      </div>
     {% elif property.pets_allowed and property.property_type == 'Apartment' %}

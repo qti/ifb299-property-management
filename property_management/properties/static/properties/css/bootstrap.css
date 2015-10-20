@@ -747,7 +747,7 @@ pre code {
 }
 
 #Container .mix{
-	display: none;
+  display: none;
 }
 
 .container {
@@ -5149,7 +5149,7 @@ button.close {
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: .3rem;
   outline: 0;
-  /* background:		rgba(255,255,255,0.85); */
+  /* background:    rgba(255,255,255,0.85); */
 }
 
 .modal-backdrop {
@@ -6471,33 +6471,33 @@ by bootstrap */
 
 /* Format the layout of the address on each property card in the properties.html page */
 .property-card-address-indent {
-  text-indent:  	14px;     			/* indent the text so each line, lines up */
-  vertical-align: 	top;      			/* to remove white space when using <div> tags */
+  text-indent:    14px;           /* indent the text so each line, lines up */
+  vertical-align:   top;            /* to remove white space when using <div> tags */
 }
 
 
 /* Sort box controls layout */
 .filter-controls {
-	list-style-type: 	none;			/* remove list dot points */
-	text-align:			left;			/* align text to the left side */
-	padding-left: 		40px;			/* left padding to position controls to middle */
-	padding-top:		30px;			/* top padding to position controls to middle */
-	padding-bottom:		0px;			/* no padding to position controls to middle */
+  list-style-type:  none;     /* remove list dot points */
+  text-align:     left;     /* align text to the left side */
+  padding-left:     40px;     /* left padding to position controls to middle */
+  padding-top:    30px;     /* top padding to position controls to middle */
+  padding-bottom:   0px;      /* no padding to position controls to middle */
 }
 
 /* Sort box control labels */
 .filter-label {
-	display:			inline-block;	/* acts as an inline block */
-	width: 				150px;			/* set a fixed width for the labels */
-	margin:				0px;			/* remove all margins from labels */
-	padding-left: 		0px;			/* remove left padding from labels */
-	padding-right:		6px;			/* right padding to space label from controls */
-	text-align:			right;			/* align text to the right to center controls */
+  display:      inline-block; /* acts as an inline block */
+  width:        150px;      /* set a fixed width for the labels */
+  margin:       0px;      /* remove all margins from labels */
+  padding-left:     0px;      /* remove left padding from labels */
+  padding-right:    6px;      /* right padding to space label from controls */
+  text-align:     right;      /* align text to the right to center controls */
 }
 
 /* Sort box control buttons */
 .filter-control-button {
-	margin-right:		6px;			/* set right margin */
+  margin-right:   6px;      /* set right margin */
 }
 
 
@@ -6527,9 +6527,17 @@ img {
 
 .video {
     position: fixed;
-    width: auto;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     z-index: -100;
+    background-size: 100% 100%;
+
+    /*width: auto;*/
+    /*height: 100vh;*/
+    /*background-image: url(http://i.imgur.com/0AoP25F.jpg);*/
+    /*padding-left: 4.5em;*/
+
+    background: transparent url(http://i.imgur.com/0AoP25F.jpg) 50% 50% / cover no-repeat ;
 }
 
 
