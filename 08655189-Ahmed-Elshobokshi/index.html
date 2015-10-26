@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block content %}
+<div class="intro hidden-md-down">
+      <video class="video" autoplay  preload="none" id="bgvid" loop muted>
+        <source src="{% static 'properties/intro.mp4' %}" type="video/mp4">
+      </video>
+      <div class="introtxt">
+          <h1 class="display-1">Property <b style="color:#05B2DC;">M</b>anagement</h1>
+          <h3 style="color: white;">View and Manage Properties</h3>
+          <br>
+
+        <a class="btn btn-primary btn-lg" href="properties"><i class="fa fa-home"></i> View Properties</a>
+
+      </div>
+      </div>
+      
+      <div class="introm hidden-lg-up">
+      <div class="introtxt">
+          <h1 class="display-2">Property Management</h1>
+          <h3 style="color: white;">View and Manage Properties</h3>
+          <br>
+
+        <a class="btn btn-primary btn-lg" href="properties"><i class="fa fa-home"></i> View Properties</a>
+
+      </div>
+</div>
+{% endblock %}
