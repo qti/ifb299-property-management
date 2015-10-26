@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+/* remove title bar that is under the nav bar */
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+
+/* container for the log out message */
+<div class="logout_page_message">
+	/* display the log out message */
+	<p>{% trans "You have now been logged out." %}</p>
+
+	/* display link to login page */
+	<p><a href="{% url 'admin:index' %}">{% trans 'Log in again' %}</a></p>
+</div>
+
+{% endblock %}
