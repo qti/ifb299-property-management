@@ -1,1 +1,2 @@
-**Group 25 personal portfolios for release 2**
+Group 25 personal portfolios for release 2
+-------------
