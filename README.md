@@ -5,3 +5,5 @@
 
 Heroku will automatically pull from the production branch, so merge it with master to see changes reflected on the Heroku site.
 
+
+*Refer to Jira page group 25 for burndown chart, task tracking and time management
