@@ -38,8 +38,6 @@ def create_user_test_accounts(self):
         group.user_set.add(self.test_owner_one)
         group.user_set.add(self.test_owner_two)
 
-        group.is_staff = True
-
         # Managers
         Group.objects.get_or_create(name='managers')
 
@@ -325,6 +323,7 @@ class SeleniumTests(LiveServerTestCase):
         self.selenium.get('%s%s' % (self.live_server_url, '/properties/'))
         self.selenium.find_element_by_name("q").clear()      
         self.selenium.find_element_by_name("q").send_keys("200")
+        time.sleep(1)
         self.selenium.find_element_by_xpath("//button[@type='submit']").click()
 
     def test_filter_lowhigh(self):
@@ -358,12 +357,11 @@ class SeleniumTests(LiveServerTestCase):
     def test_successful_login_logout(self):
         self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
         self.selenium.find_element_by_id("id_username").clear()
-        self.selenium.find_element_by_id("id_username").send_keys("bob")
+        self.selenium.find_element_by_id("id_username").send_keys("admin")
         self.selenium.find_element_by_id("id_password").clear()
         self.selenium.find_element_by_id("id_password").send_keys("password")
         self.selenium.find_element_by_css_selector("button.btn.btn-primary").click()
-	self.selenium.find_element_by_link_text("Log out").click()
-
+        self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
 
     def test_incorrect_login_details(self):
         self.selenium.get('%s%s' % (self.live_server_url, '/admin/'))
@@ -373,3 +371,5 @@ class SeleniumTests(LiveServerTestCase):
         self.selenium.find_element_by_id("id_password").send_keys("passw1rd")
         self.selenium.find_element_by_css_selector("button.btn.btn-primary").click()
         self.assertEqual(self.selenium.current_url, "http://localhost:8081/admin/login/?next=/admin/")
+
+
